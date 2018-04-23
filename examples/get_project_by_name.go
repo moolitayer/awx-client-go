@@ -34,7 +34,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/openshift/autoheal/pkg/awx"
+	"github.com/moolitayer/awx-client-go/awx"
 )
 
 var (
