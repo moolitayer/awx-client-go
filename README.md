@@ -4,4 +4,4 @@ A golang client library for [AWX](https://github.com/ansible/awx) and [Ansible T
 
 ## Examples
 
-See [examples/awx](examples/awx).
+See [examples](examples).
