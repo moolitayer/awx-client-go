@@ -1,0 +1,8 @@
+[[constraint]]
+  revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
+  name = "github.com/golang/glog"
+
+[prune]
+  go-tests = true
+  non-go = true
+  unused-packages = true
