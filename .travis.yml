@@ -12,3 +12,4 @@ install:
 script:
 - go build ./awx
 - for i in examples/*.go; do go build "${i}"; done
+- go test ./awx
