@@ -1,0 +1,14 @@
+language: go
+
+go:
+- "1.9"
+- "1.10"
+
+go_import_path: github.com/moolitayer/awx-client-go
+
+install:
+- go get github.com/golang/glog
+
+script:
+- go build ./awx
+- for i in examples/*.go; do go build "${i}"; done
