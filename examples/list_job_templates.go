@@ -48,7 +48,7 @@ var (
 func init() {
 	flag.StringVar(&url, "url", "https://awx.example.com/api", "API URL.")
 	flag.StringVar(&username, "username", "admin", "API user name.")
-	flag.StringVar(&password, "password", "", "API user password.")
+	flag.StringVar(&password, "password", "password", "API user password.")
 	flag.StringVar(&proxy, "proxy", "", "API proxy URL.")
 	flag.BoolVar(&insecure, "insecure", false, "Don't verify server certificate.")
 	flag.StringVar(&caFile, "ca-file", "", "Trusted CA certificates.")
