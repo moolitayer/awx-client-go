@@ -28,7 +28,7 @@ limitations under the License.
 //		-logtostderr \
 //		-v=2
 
-package main
+package examples
 
 import (
 	"flag"
