@@ -4,13 +4,11 @@
 
 A golang client library for [AWX](https://github.com/ansible/awx) and [Ansible Tower](https://www.ansible.com/products/tower) REST API.
 
-## Build
-
-In order to build this package `glog` package is needed. Run:
-
+## Installation
+Install awx-client-go using the "go-get" command:
 ```
-go get github.com/golang/glog
-go build ./awx/ 
+go get github.com/moolitayer/golang/glog # Dependency
+go get github.com/moolitayer/awx-client-go/awx
 ```
 
 ## Examples
