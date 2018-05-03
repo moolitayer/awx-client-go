@@ -7,7 +7,7 @@ A golang client library for [AWX](https://github.com/ansible/awx) and [Ansible T
 ## Installation
 Install awx-client-go using the "go-get" command:
 ```
-go get github.com/moolitayer/golang/glog # Dependency
+go get github.com/golang/glog # Dependency
 go get github.com/moolitayer/awx-client-go/awx
 ```
 
