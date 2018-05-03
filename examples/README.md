@@ -16,8 +16,7 @@ $ go run list_job_templates.go \
 -username "admin" \
 -password "..." \
 -ca-file "ca.pem" \
--logtostderr \
--v=2
+-debug
 ```
 
 Note that the `-logtostderr` and `-v=2` options aren't needed, but they are very
