@@ -60,7 +60,7 @@ func main() {
 
 	// Connect to the server, and remember to close the connection:
 	connection, err := awx.NewConnectionBuilder().
-		Url(url).
+		URL(url).
 		Username(username).
 		Password(password).
 		Proxy(proxy).
