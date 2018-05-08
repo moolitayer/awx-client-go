@@ -84,7 +84,11 @@ type JobTemplateLaunchPostRequest struct {
 
 // ExtraVars set a map or external variables sent to the AWX job.
 func (r *JobTemplateLaunchPostRequest) ExtraVars(value map[string]interface{}) *JobTemplateLaunchPostRequest {
-	r.extraVars = value
+	extraVars := make(map[string]int)
+	for key, value := range value {
+		extraVars[key] = value
+	}
+	r.extraVars = extraVars
 	return r
 }
 
