@@ -293,21 +293,32 @@ func (c *Connection) ensureToken() error {
 
 // getToken requests a new authentication token.
 //
-func (c *Connection) getToken() error {
-	err := c.getAuthToken()
+func (c *Connection) getToken() (err error) {
+	if c.OAuth2Supported() {
+		err = c.getPATToken()
+	} else {
+		err = c.getAuthToken()
+	}
 	if err != nil {
-		if glog.V(2) {
-			glog.Warningf("Failed to aquire authtoken '%s', attempting PAT", err)
-		}
-		err := c.getPATToken()
-		if err != nil {
-			return err
-		}
+		return
 	}
 	return nil
 }
 
+func (c *Connection) OAuth2Supported() bool {
+	err := c.head("", "o")
+	if err != nil {
+		// Can fail due to other reasons(i.e network availability) and in that case
+		// the PAT request will also fail.
+		return false
+	}
+	return true
+}
+
 func (c *Connection) getAuthToken() error {
+	if glog.V(2) {
+		glog.Infoln("Requesting Authtoken")
+	}
 	var request data.AuthTokenPostRequest
 	var response data.AuthTokenPostResponse
 	request.Username = c.username
@@ -324,6 +335,9 @@ func (c *Connection) getAuthToken() error {
 }
 
 func (c *Connection) getPATToken() error {
+	if glog.V(2) {
+		glog.Infoln("Requesting OAuth2 PAT Token")
+	}
 	var request data.PATPostRequest
 	var response data.PATPostResponse
 	request.Description = "AWX Go Client"
@@ -343,14 +357,14 @@ func (c *Connection) getPATToken() error {
 
 // makeUrl calculates the absolute URL for the given relative path and query.
 //
-func (c *Connection) makeUrl(path string, query url.Values) string {
+func (c *Connection) makeUrl(path, prefix string, query url.Values) string {
 	// Allocate a buffer large enough for the longest possible URL:
 	buffer := new(bytes.Buffer)
-	buffer.Grow(len(c.base) + len(c.version) + 1 + len(path) + 1)
+	buffer.Grow(len(c.base) + len(prefix) + 1 + len(path) + 1)
 
 	// Write the componentes of the URL:
 	buffer.WriteString(c.base)
-	buffer.WriteString(c.version)
+	buffer.WriteString(prefix)
 	if path != "" {
 		buffer.WriteString("/")
 		buffer.WriteString(path)
@@ -385,9 +399,45 @@ func (c *Connection) get(path string, query url.Values, output interface{}) erro
 	return json.Unmarshal(outputBytes, output)
 }
 
+func (c *Connection) head(path, prefix string) error {
+	if err := c.rawHead(path, prefix); err != nil {
+		return err
+	}
+	return nil
+}
+func (c *Connection) rawHead(path, prefix string) (err error) {
+	address := c.makeUrl(path, prefix, nil)
+	request, err := http.NewRequest(http.MethodHead, address, nil)
+	if err != nil {
+		return
+	}
+	c.setAgent(request)
+	c.setCredentials(request)
+	c.setAccept(request)
+	if glog.V(2) {
+		glog.Infof("Sending HEAD request to '%s'.", address)
+		glog.Info("Request headers:\n")
+		for key, val := range request.Header {
+			glog.Infof("	%s: %v", key, val)
+		}
+	}
+	response, err := c.client.Do(request)
+	if err != nil {
+		return
+	}
+	if response.StatusCode > 202 {
+		err = fmt.Errorf(
+			"Status code '%d' returned from server: '%s'",
+			response.StatusCode,
+			response.Status,
+		)
+		return
+	}
+	return
+}
 func (c *Connection) rawGet(path string, query url.Values) (output []byte, err error) {
 	// Send the request:
-	address := c.makeUrl(path, query)
+	address := c.makeUrl(path, c.version, query)
 	request, err := http.NewRequest(http.MethodGet, address, nil)
 	if err != nil {
 		return
@@ -455,7 +505,7 @@ func (c *Connection) post(path string, query url.Values, input interface{}, outp
 
 func (c *Connection) rawPost(path string, query url.Values, input []byte) (output []byte, err error) {
 	// Post the input bytes:
-	address := c.makeUrl(path, query)
+	address := c.makeUrl(path, c.version, query)
 	buffer := bytes.NewBuffer(input)
 	request, err := http.NewRequest(http.MethodPost, address, buffer)
 	if err != nil {
