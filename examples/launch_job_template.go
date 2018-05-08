@@ -124,6 +124,7 @@ func main() {
 		response, err := launchResource.Post().
 			Limit(limit).
 			ExtraVars(extraVars).
+			ExtraVar("my-var", "example-val").
 			Send()
 		if err != nil {
 			fmt.Println("Failed to get launch job %v", err)
