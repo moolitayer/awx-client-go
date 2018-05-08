@@ -1,0 +1,129 @@
+/*
+Copyright (c) 2018 Red Hat, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+// This example shows how to launch a job template.
+//
+// Use the following command to build and run it with all the debug output sent to the standard
+// error output:
+//
+//	go run launch_job_template.go \
+//		-url "https://awx.example.com/api" \
+//		-username "admin" \
+//      -proxy "http://proxy.com:3128" \
+//		-password "..." \
+//		-ca-file "ca.pem" \
+//		-logtostderr \
+//      -project "project"
+//		-template "template-name"
+//		-limit "node0.openshift.private"
+//      -extra-var alert=test
+//      -extra-var node=node0.openshift.private
+//		-v=2
+
+package main
+
+import (
+	"flag"
+	"fmt"
+
+	"github.com/golang/glog"
+	awx "github.com/moolitayer/awx-client-go/awx"
+)
+
+var (
+	url      string
+	username string
+	password string
+	proxy    string
+	insecure bool
+	caFile   string
+	project  string
+	template string
+	limit    string
+
+//	extraVar map[string]interface{}
+)
+
+func init() {
+	flag.StringVar(&url, "url", "https://awx.example.com/api", "API URL.")
+	flag.StringVar(&username, "username", "admin", "API user name.")
+	flag.StringVar(&password, "password", "password", "API user password.")
+	flag.StringVar(&proxy, "proxy", "", "API proxy URL.")
+	flag.BoolVar(&insecure, "insecure", false, "Don't verify server certificate.")
+	flag.StringVar(&caFile, "ca-file", "", "Trusted CA certificates.")
+	flag.StringVar(&project, "project", "", "Project Name.")
+	flag.StringVar(&template, "template", "", "Template Name.")
+	flag.StringVar(&limit, "limit", "", "Hosts limit")
+}
+
+func main() {
+	// Parse the command line:
+	flag.Parse()
+
+	// Connect to the server, and remember to close the connection:
+	connection, err := awx.NewConnectionBuilder().
+		Url(url).
+		Username(username).
+		Password(password).
+		Proxy(proxy).
+		CAFile(caFile).
+		Insecure(insecure).
+		Build()
+	if err != nil {
+		panic(err)
+	}
+	defer connection.Close()
+
+	// Get the template by name
+	templatesResource := connection.JobTemplates()
+	templatesResponse, err := templatesResource.Get().
+		Filter("project__name", project).
+		Filter("name", template).
+		Send()
+
+	if err != nil {
+		fmt.Errorf("Failed to get template resource %v", err)
+		return
+	}
+
+	if templatesResponse.Count() == 0 {
+		fmt.Errorf(
+			"Template '%s' not found in project '%s'",
+			template,
+			project,
+		)
+		return
+	}
+
+	// Launch all corresponding templated
+	for _, t := range templatesResponse.Results() {
+		launchResource := connection.JobTemplates().Id(t.Id()).Launch()
+
+		response, err := launchResource.Post().
+			Limit(limit).
+			Send()
+		if err != nil {
+			fmt.Errorf("Failed to get launch job %v", err)
+			return
+		}
+
+		glog.Infof(
+			"Request to launch AWX job from template '%s' has been sent, job identifier is '%v'",
+			template,
+			response.Job,
+		)
+	}
+}
