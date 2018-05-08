@@ -55,6 +55,8 @@ When Username and Password are specified the client will attempt to acquire Toke
 - Jobs
 - Job Templates
 
+Please submit feature requests as Github [issues](https://github.com/moolitayer/awx-client-go/issues/new).
+
 ### Retrieving resources
 ```go
 projectsResource := connection.Projects()
