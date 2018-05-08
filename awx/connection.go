@@ -27,8 +27,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/golang/glog"
 	"github.com/moolitayer/awx-client-go/awx/internal/data"
+	"log"
 )
 
 // Version is the version of the client.
@@ -44,6 +44,7 @@ type ConnectionBuilder struct {
 	token    string
 	bearer   string
 	insecure bool
+	debug    bool
 
 	// Trusted CA certificates can be loaded from slices of bytes or from files:
 	caCerts [][]byte
@@ -57,6 +58,7 @@ type Connection struct {
 	password string
 	agent    string
 	version  string
+	debug    bool
 	// AWX had two implementations for authentication tokens
 	token  string // using the /authtoken endpoint, used in tower < 3.3
 	bearer string // an OAuth2 implementation, used since tower 3.3
@@ -116,6 +118,11 @@ func (b *ConnectionBuilder) Bearer(bearer string) *ConnectionBuilder {
 
 func (b *ConnectionBuilder) Insecure(insecure bool) *ConnectionBuilder {
 	b.insecure = insecure
+	return b
+}
+
+func (b *ConnectionBuilder) Debug(debug bool) *ConnectionBuilder {
+	b.debug = debug
 	return b
 }
 
@@ -250,6 +257,7 @@ func (b *ConnectionBuilder) Build() (c *Connection, err error) {
 	c.password = b.password
 	c.version = "v2"
 	c.client = client
+	c.debug = b.debug
 
 	// Ensure that the base URL has an slash at the end:
 	if !strings.HasSuffix(c.base, "/") {
@@ -296,9 +304,7 @@ func (c *Connection) ensureToken() error {
 func (c *Connection) getToken() error {
 	err := c.getAuthToken()
 	if err != nil {
-		if glog.V(2) {
-			glog.Warningf("Failed to aquire authtoken '%s', attempting PAT", err)
-		}
+		c.debugPrint("Failed to aquire authtoken '%s', attempting PAT", err)
 		err := c.getPATToken()
 		if err != nil {
 			return err
@@ -395,11 +401,11 @@ func (c *Connection) rawGet(path string, query url.Values) (output []byte, err e
 	c.setAgent(request)
 	c.setCredentials(request)
 	c.setAccept(request)
-	if glog.V(2) {
-		glog.Infof("Sending GET request to '%s'.", address)
-		glog.Info("Request headers:\n")
+	if c.debug {
+		c.debugPrint("Sending GET request to '%s'.", address)
+		c.debugPrint("Request headers:\n")
 		for key, val := range request.Header {
-			glog.Infof("	%s: %v", key, val)
+			c.debugPrint("	%s: %v", key, val)
 		}
 	}
 	response, err := c.client.Do(request)
@@ -414,11 +420,11 @@ func (c *Connection) rawGet(path string, query url.Values) (output []byte, err e
 	if err != nil {
 		return
 	}
-	if glog.V(2) {
-		glog.Infof("Response body:\n%s", c.indent(output))
-		glog.Info("Response headers:")
+	if c.debug {
+		c.debugPrint("Response body:\n%s", c.indent(output))
+		c.debugPrint("Response headers:")
 		for key, val := range response.Header {
-			glog.Infof("	%s: %v", key, val)
+			c.debugPrint("	%s: %v", key, val)
 		}
 
 	}
@@ -465,12 +471,12 @@ func (c *Connection) rawPost(path string, query url.Values, input []byte) (outpu
 	c.setCredentials(request)
 	c.setContentType(request)
 	c.setAccept(request)
-	if glog.V(2) {
-		glog.Infof("Sending POST request to '%s'.", address)
-		glog.Infof("Request body:\n%s", c.indent(input))
-		glog.Infof("Request headers:")
+	if c.debug {
+		c.debugPrint("Sending POST request to '%s'.", address)
+		c.debugPrint("Request body:\n%s", c.indent(input))
+		c.debugPrint("Request headers:")
 		for key, val := range request.Header {
-			glog.Infof("	%s: %v", key, val)
+			c.debugPrint("	%s: %v", key, val)
 		}
 	}
 	response, err := c.client.Do(request)
@@ -485,11 +491,11 @@ func (c *Connection) rawPost(path string, query url.Values, input []byte) (outpu
 	if err != nil {
 		return
 	}
-	if glog.V(2) {
-		glog.Infof("Response body:\n%s", c.indent(output))
-		glog.Info("Response headers:")
+	if c.debug {
+		c.debugPrint("Response body:\n%s", c.indent(output))
+		c.debugPrint("Response headers:")
 		for key, val := range response.Header {
-			glog.Infof("	%s: %v", key, val)
+			c.debugPrint("	%s: %v", key, val)
 		}
 	}
 	if response.StatusCode > 202 {
@@ -532,4 +538,10 @@ func (c *Connection) indent(data []byte) []byte {
 		return data
 	}
 	return buffer.Bytes()
+}
+
+func (c *Connection) debugPrint(format string, v ...interface{}) {
+	if c.debug {
+		log.Printf("Debug: "+format, v...)
+	}
 }

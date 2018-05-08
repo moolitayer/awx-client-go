@@ -24,9 +24,8 @@ limitations under the License.
 //		-username "admin" \
 //		-password "..." \
 //		-ca-file "ca.pem" \
-//		-id 13 \
-//		-logtostderr \
-//		-v=2
+//		-debug \
+//		-id 13
 
 package main
 
@@ -45,6 +44,7 @@ var (
 	insecure bool
 	caFile   string
 	id       int
+	debug    bool
 )
 
 func init() {
@@ -55,6 +55,7 @@ func init() {
 	flag.BoolVar(&insecure, "insecure", false, "Don't verify server certificate.")
 	flag.StringVar(&caFile, "ca-file", "", "Trusted CA certificates.")
 	flag.IntVar(&id, "id", 0, "The identifier of the project.")
+	flag.BoolVar(&debug, "debug", false, "Debug output.")
 }
 
 func main() {
@@ -69,6 +70,7 @@ func main() {
 		Proxy(proxy).
 		CAFile(caFile).
 		Insecure(insecure).
+		Debug(debug).
 		Build()
 	if err != nil {
 		panic(err)

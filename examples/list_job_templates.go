@@ -23,9 +23,8 @@ limitations under the License.
 //		-url "https://awx.example.com/api" \
 //		-username "admin" \
 //		-password "..." \
-//		-ca-file "ca.pem" \
-//		-logtostderr \
-//		-v=2
+//              -debug \
+//		-ca-file "ca.pem"
 
 package main
 
@@ -43,6 +42,7 @@ var (
 	proxy    string
 	insecure bool
 	caFile   string
+	debug    bool
 )
 
 func init() {
@@ -52,6 +52,7 @@ func init() {
 	flag.StringVar(&proxy, "proxy", "", "API proxy URL.")
 	flag.BoolVar(&insecure, "insecure", false, "Don't verify server certificate.")
 	flag.StringVar(&caFile, "ca-file", "", "Trusted CA certificates.")
+	flag.BoolVar(&debug, "debug", false, "Debug output.")
 }
 
 func main() {
@@ -66,6 +67,7 @@ func main() {
 		Proxy(proxy).
 		CAFile(caFile).
 		Insecure(insecure).
+		Debug(debug).
 		Build()
 	if err != nil {
 		panic(err)
