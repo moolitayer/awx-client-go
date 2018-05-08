@@ -26,33 +26,35 @@ limitations under the License.
 //		-password "..." \
 //		-ca-file "ca.pem" \
 //		-logtostderr \
-//      -project "project"
-//		-template "template-name"
-//		-limit "node0.openshift.private"
-//      -extra-var alert=test
-//      -extra-var node=node0.openshift.private
+//      -project "project" \
+//		-template "template-name" \
+//		-limit "node0.openshift.private" \
+// 		-extra-vars "alertname=bla job=my-job complex={\"simple\":\"label\"}" \
 //		-v=2
 
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
+	"strings"
 
 	"github.com/golang/glog"
 	awx "github.com/moolitayer/awx-client-go/awx"
 )
 
 var (
-	url      string
-	username string
-	password string
-	proxy    string
-	insecure bool
-	caFile   string
-	project  string
-	template string
-	limit    string
+	url           string
+	username      string
+	password      string
+	proxy         string
+	insecure      bool
+	caFile        string
+	project       string
+	template      string
+	limit         string
+	extraVarsFlag string
 
 //	extraVar map[string]interface{}
 )
@@ -67,11 +69,18 @@ func init() {
 	flag.StringVar(&project, "project", "", "Project Name.")
 	flag.StringVar(&template, "template", "", "Template Name.")
 	flag.StringVar(&limit, "limit", "", "Hosts limit")
+	flag.StringVar(&extraVarsFlag, "extra-vars", "", "extra variables to the Job")
 }
 
 func main() {
 	// Parse the command line:
 	flag.Parse()
+
+	extraVars, err := parseExtraVars(extraVarsFlag)
+	if err != nil {
+		fmt.Println("Failed to parse extra-vars %s", extraVarsFlag, err)
+		return
+	}
 
 	// Connect to the server, and remember to close the connection:
 	connection, err := awx.NewConnectionBuilder().
@@ -95,12 +104,12 @@ func main() {
 		Send()
 
 	if err != nil {
-		fmt.Errorf("Failed to get template resource %v", err)
+		fmt.Println("Failed to get template resource %v", err)
 		return
 	}
 
 	if templatesResponse.Count() == 0 {
-		fmt.Errorf(
+		fmt.Println(
 			"Template '%s' not found in project '%s'",
 			template,
 			project,
@@ -114,9 +123,10 @@ func main() {
 
 		response, err := launchResource.Post().
 			Limit(limit).
+			ExtraVars(extraVars).
 			Send()
 		if err != nil {
-			fmt.Errorf("Failed to get launch job %v", err)
+			fmt.Println("Failed to get launch job %v", err)
 			return
 		}
 
@@ -126,4 +136,39 @@ func main() {
 			response.Job,
 		)
 	}
+}
+
+// Parse array of strings to extra vars json
+// Expected input format: "a=b x=y c={\"v\":\"w\"}"
+func parseExtraVars(input string) (output map[string]interface{}, err error) {
+	variables := strings.Split(input, " ")
+	if len(variables) > 0 {
+		output = make(map[string]interface{})
+	}
+	for _, currVar := range variables {
+		fmt.Println("parsing", currVar)
+		list := strings.SplitN(currVar, "=", 2)
+		if len(list) != 2 {
+			err = fmt.Errorf("bad format of extra-var")
+			return
+		}
+
+		key := list[0]
+		val := list[1]
+
+		fmt.Println("umnarshalling", val)
+		if val[0] == '{' {
+			// handle complex json
+			var parsedJson interface{}
+			err = json.Unmarshal([]byte(val), &parsedJson)
+			if err != nil {
+				return
+			}
+
+			output[key] = parsedJson
+		} else {
+			output[key] = val
+		}
+	}
+	return
 }
