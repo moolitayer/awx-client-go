@@ -397,6 +397,8 @@ func (c *Connection) rawGet(path string, query url.Values) (output []byte, err e
 	c.setAccept(request)
 	if glog.V(2) {
 		glog.Infof("Sending GET request to '%s'.", address)
+	}
+	if glog.V(3) {
 		glog.Info("Request headers:\n")
 		for key, val := range request.Header {
 			glog.Infof("	%s: %v", key, val)
@@ -414,7 +416,7 @@ func (c *Connection) rawGet(path string, query url.Values) (output []byte, err e
 	if err != nil {
 		return
 	}
-	if glog.V(2) {
+	if glog.V(3) {
 		glog.Infof("Response body:\n%s", c.indent(output))
 		glog.Info("Response headers:")
 		for key, val := range response.Header {
@@ -467,6 +469,8 @@ func (c *Connection) rawPost(path string, query url.Values, input []byte) (outpu
 	c.setAccept(request)
 	if glog.V(2) {
 		glog.Infof("Sending POST request to '%s'.", address)
+	}
+	if glog.V(3) {
 		glog.Infof("Request body:\n%s", c.indent(input))
 		glog.Infof("Request headers:")
 		for key, val := range request.Header {
@@ -485,7 +489,7 @@ func (c *Connection) rawPost(path string, query url.Values, input []byte) (outpu
 	if err != nil {
 		return
 	}
-	if glog.V(2) {
+	if glog.V(3) {
 		glog.Infof("Response body:\n%s", c.indent(output))
 		glog.Info("Response headers:")
 		for key, val := range response.Header {
