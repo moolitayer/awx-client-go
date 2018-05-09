@@ -1,0 +1,667 @@
+{
+  "Name": "connection_pre_oauth2",
+  "Path": "",
+  "Tracks": [
+    {
+      "Request": {
+        "Method": "HEAD",
+        "URL": {
+          "Scheme": "https",
+          "Opaque": "",
+          "User": null,
+          "Host": "tower.private",
+          "Path": "/api/o/",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Accept": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Basic YWRtaW46UEFTU1dPUkQ="
+          ],
+          "User-Agent": [
+            ""
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "404 NOT FOUND",
+        "StatusCode": 404,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 09 May 2018 10:11:50 GMT"
+          ],
+          "Server": [
+            "nginx/1.12.2"
+          ],
+          "Vary": [
+            "Accept, Accept-Language, Cookie"
+          ],
+          "X-Api-Total-Time": [
+            "0.006s"
+          ]
+        },
+        "Body": null,
+        "ContentLength": -1,
+        "TransferEncoding": null,
+        "Trailer": null,
+        "TLS": {
+          "Version": 771,
+          "HandshakeComplete": true,
+          "DidResume": false,
+          "CipherSuite": 49200,
+          "NegotiatedProtocol": "",
+          "NegotiatedProtocolIsMutual": true,
+          "ServerName": "",
+          "PeerCertificates": [
+            {
+              "Raw": "MIIC/TCCAeWgAwIBAgIJAOWwA7t070OYMA0GCSqGSIb3DQEBCwUAMBQxEjAQBgNVBAMMCWxvY2FsaG9zdDAgFw0xODAyMTQxNTEzMThaGA8yMjkxMTEyOTE1MTMxOFowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm6Um0tGSDqKSDZl47K3s4nykJV7xaYf14gkx/dijGE8D2qSRk/Vdi0aZe5h6jsUXbo+GQlhrXriETkPp7aly2lsihb3VP+iZiF7Mf4rPi7ZLCaj9oqKyHyX/ZpkOH9SoAG5DklVHgT48bPJt7w2CRN+yhjo7hBJ7wdFHRi44bSkoq6uvUUwD4eNZpy9oxyos8Iq9pyAdlGAwiuTwnHEtyxXAlWMRF2lwDm1HB+WBzLLtduhrYUWQwbtRCDGPWo6hR95v0cAr7RjIEXoCowbkzol33kS6RRV+u/c53kg0FbJ53+8CP5/bgKj2VVN0/f5l+csIXZ2b7Kg5juIsjCNHawIDAQABo1AwTjAdBgNVHQ4EFgQUTPBOXUakeKZmQSOpe73Z+VjGkKQwHwYDVR0jBBgwFoAUTPBOXUakeKZmQSOpe73Z+VjGkKQwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAZekLWYNBBiK23+zrAPASyb3GW5Oes/tq6MB6E9Rn4BRMLG+eVfHTZcqr01Fzs8VmA4FAEZ2eUzAeNfz3rJHtZQm5NIxpN4gHmH4gaxoXUEgVP6jxlQW5hy9sBjLJXnJ06Sf8ilK/HhG37ZZbvI3xPWcSQXghhYD5k3Hv2YIvLPflgPPX9iuP2nH3CFcDVh8X2LzifzCbj87S+S2K63WwQV8Jj2opdbCgVWcZ3qmgW34H7A9cMgCf05QpzLmMN40fecMtIrQPpUXk7dKEyfhLEF4S2BV9kihXvxlMztlpH8Kd3rK6RCbL2EgVAU2Zrm+rkMaguseVso2FQj8EhqJYJA==",
+              "RawTBSCertificate": "MIIB5aADAgECAgkA5bADu3TvQ5gwDQYJKoZIhvcNAQELBQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MCAXDTE4MDIxNDE1MTMxOFoYDzIyOTExMTI5MTUxMzE4WjAUMRIwEAYDVQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCbpSbS0ZIOopINmXjsrezifKQlXvFph/XiCTH92KMYTwPapJGT9V2LRpl7mHqOxRduj4ZCWGteuIROQ+ntqXLaWyKFvdU/6JmIXsx/is+LtksJqP2iorIfJf9mmQ4f1KgAbkOSVUeBPjxs8m3vDYJE37KGOjuEEnvB0UdGLjhtKSirq69RTAPh41mnL2jHKizwir2nIB2UYDCK5PCccS3LFcCVYxEXaXAObUcH5YHMsu126GthRZDBu1EIMY9ajqFH3m/RwCvtGMgRegKjBuTOiXfeRLpFFX679zneSDQVsnnf7wI/n9uAqPZVU3T9/mX5ywhdnZvsqDmO4iyMI0drAgMBAAGjUDBOMB0GA1UdDgQWBBRM8E5dRqR4pmZBI6l7vdn5WMaQpDAfBgNVHSMEGDAWgBRM8E5dRqR4pmZBI6l7vdn5WMaQpDAMBgNVHRMEBTADAQH/",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm6Um0tGSDqKSDZl47K3s4nykJV7xaYf14gkx/dijGE8D2qSRk/Vdi0aZe5h6jsUXbo+GQlhrXriETkPp7aly2lsihb3VP+iZiF7Mf4rPi7ZLCaj9oqKyHyX/ZpkOH9SoAG5DklVHgT48bPJt7w2CRN+yhjo7hBJ7wdFHRi44bSkoq6uvUUwD4eNZpy9oxyos8Iq9pyAdlGAwiuTwnHEtyxXAlWMRF2lwDm1HB+WBzLLtduhrYUWQwbtRCDGPWo6hR95v0cAr7RjIEXoCowbkzol33kS6RRV+u/c53kg0FbJ53+8CP5/bgKj2VVN0/f5l+csIXZ2b7Kg5juIsjCNHawIDAQAB",
+              "RawSubject": "MBQxEjAQBgNVBAMMCWxvY2FsaG9zdA==",
+              "RawIssuer": "MBQxEjAQBgNVBAMMCWxvY2FsaG9zdA==",
+              "Signature": "ZekLWYNBBiK23+zrAPASyb3GW5Oes/tq6MB6E9Rn4BRMLG+eVfHTZcqr01Fzs8VmA4FAEZ2eUzAeNfz3rJHtZQm5NIxpN4gHmH4gaxoXUEgVP6jxlQW5hy9sBjLJXnJ06Sf8ilK/HhG37ZZbvI3xPWcSQXghhYD5k3Hv2YIvLPflgPPX9iuP2nH3CFcDVh8X2LzifzCbj87S+S2K63WwQV8Jj2opdbCgVWcZ3qmgW34H7A9cMgCf05QpzLmMN40fecMtIrQPpUXk7dKEyfhLEF4S2BV9kihXvxlMztlpH8Kd3rK6RCbL2EgVAU2Zrm+rkMaguseVso2FQj8EhqJYJA==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": {
+                "N": "19648376585777576538267952131049130546613228231065925671171130093440353097125903486601256483783214873272917615877721335054442524831706468796658032296470809746544317698622904588722966648703676498811588298902959469756267427468036257862888742510232316914381371536620047351041657100578289702471587997140078921985020882028442392439639186857641167856553910532672950053237731678235910584414885219013963035105691820854980478069506402212862104266417118297947864463906630407692240399797829605253537383632803237900179223414673853393169081959038510961430082318138820193818758559386855187362235490262759170389015435677119660902251",
+                "E": 65537
+              },
+              "Version": 3,
+              "SerialNumber": 16550732734242177944,
+              "Issuer": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "localhost",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "localhost"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "localhost",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "localhost"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2018-02-14T15:13:18Z",
+              "NotAfter": "2291-11-29T15:13:18Z",
+              "KeyUsage": 0,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBRM8E5dRqR4pmZBI6l7vdn5WMaQpA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFEzwTl1GpHimZkEjqXu92flYxpCk"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": false,
+                  "Value": "MAMBAf8="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": null,
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": true,
+              "MaxPathLen": -1,
+              "MaxPathLenZero": false,
+              "SubjectKeyId": "TPBOXUakeKZmQSOpe73Z+VjGkKQ=",
+              "AuthorityKeyId": "TPBOXUakeKZmQSOpe73Z+VjGkKQ=",
+              "OCSPServer": null,
+              "IssuingCertificateURL": null,
+              "DNSNames": null,
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": null,
+              "PolicyIdentifiers": null
+            }
+          ],
+          "VerifiedChains": null,
+          "SignedCertificateTimestamps": null,
+          "OCSPResponse": null,
+          "TLSUnique": "ZOAxY/1p3rxAEZn3"
+        }
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "POST",
+        "URL": {
+          "Scheme": "https",
+          "Opaque": "",
+          "User": null,
+          "Host": "tower.private",
+          "Path": "/api/v2/authtoken/",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Accept": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Basic YWRtaW46UEFTU1dPUkQ="
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            ""
+          ]
+        },
+        "Body": "eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJQQVNTV09SRCJ9"
+      },
+      "Response": {
+        "Status": "200 OK",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Allow": [
+            "POST, DELETE, OPTIONS"
+          ],
+          "Auth-Token-Timeout": [
+            "1800"
+          ],
+          "Cache-Control": [
+            "no-cache, no-store, must-revalidate, max-age=0"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 09 May 2018 10:11:50 GMT"
+          ],
+          "Expires": [
+            "Wed, 09 May 2018 10:11:50 GMT"
+          ],
+          "Last-Modified": [
+            "Wed, 09 May 2018 10:11:50 GMT"
+          ],
+          "Pragma": [
+            "no-cache"
+          ],
+          "Server": [
+            "nginx/1.12.2"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000"
+          ],
+          "Vary": [
+            "Accept, Accept-Language, Cookie"
+          ],
+          "X-Api-Node": [
+            "localhost"
+          ],
+          "X-Api-Time": [
+            "0.133s"
+          ],
+          "X-Api-Total-Time": [
+            "0.143s"
+          ],
+          "X-Frame-Options": [
+            "DENY"
+          ]
+        },
+        "Body": "eyJ0b2tlbiI6IjhkZTFhOTk4MGViZDkwNjViZjZjNmNmNDNjOTljMDU4YjI5MWEyYTEiLCJleHBpcmVzIjoiMjAxOC0wNS0wOVQxMDo0MTo1MC40NzFaIn0=",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": {
+          "Version": 771,
+          "HandshakeComplete": true,
+          "DidResume": false,
+          "CipherSuite": 49200,
+          "NegotiatedProtocol": "",
+          "NegotiatedProtocolIsMutual": true,
+          "ServerName": "",
+          "PeerCertificates": [
+            {
+              "Raw": "MIIC/TCCAeWgAwIBAgIJAOWwA7t070OYMA0GCSqGSIb3DQEBCwUAMBQxEjAQBgNVBAMMCWxvY2FsaG9zdDAgFw0xODAyMTQxNTEzMThaGA8yMjkxMTEyOTE1MTMxOFowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm6Um0tGSDqKSDZl47K3s4nykJV7xaYf14gkx/dijGE8D2qSRk/Vdi0aZe5h6jsUXbo+GQlhrXriETkPp7aly2lsihb3VP+iZiF7Mf4rPi7ZLCaj9oqKyHyX/ZpkOH9SoAG5DklVHgT48bPJt7w2CRN+yhjo7hBJ7wdFHRi44bSkoq6uvUUwD4eNZpy9oxyos8Iq9pyAdlGAwiuTwnHEtyxXAlWMRF2lwDm1HB+WBzLLtduhrYUWQwbtRCDGPWo6hR95v0cAr7RjIEXoCowbkzol33kS6RRV+u/c53kg0FbJ53+8CP5/bgKj2VVN0/f5l+csIXZ2b7Kg5juIsjCNHawIDAQABo1AwTjAdBgNVHQ4EFgQUTPBOXUakeKZmQSOpe73Z+VjGkKQwHwYDVR0jBBgwFoAUTPBOXUakeKZmQSOpe73Z+VjGkKQwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAZekLWYNBBiK23+zrAPASyb3GW5Oes/tq6MB6E9Rn4BRMLG+eVfHTZcqr01Fzs8VmA4FAEZ2eUzAeNfz3rJHtZQm5NIxpN4gHmH4gaxoXUEgVP6jxlQW5hy9sBjLJXnJ06Sf8ilK/HhG37ZZbvI3xPWcSQXghhYD5k3Hv2YIvLPflgPPX9iuP2nH3CFcDVh8X2LzifzCbj87S+S2K63WwQV8Jj2opdbCgVWcZ3qmgW34H7A9cMgCf05QpzLmMN40fecMtIrQPpUXk7dKEyfhLEF4S2BV9kihXvxlMztlpH8Kd3rK6RCbL2EgVAU2Zrm+rkMaguseVso2FQj8EhqJYJA==",
+              "RawTBSCertificate": "MIIB5aADAgECAgkA5bADu3TvQ5gwDQYJKoZIhvcNAQELBQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MCAXDTE4MDIxNDE1MTMxOFoYDzIyOTExMTI5MTUxMzE4WjAUMRIwEAYDVQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCbpSbS0ZIOopINmXjsrezifKQlXvFph/XiCTH92KMYTwPapJGT9V2LRpl7mHqOxRduj4ZCWGteuIROQ+ntqXLaWyKFvdU/6JmIXsx/is+LtksJqP2iorIfJf9mmQ4f1KgAbkOSVUeBPjxs8m3vDYJE37KGOjuEEnvB0UdGLjhtKSirq69RTAPh41mnL2jHKizwir2nIB2UYDCK5PCccS3LFcCVYxEXaXAObUcH5YHMsu126GthRZDBu1EIMY9ajqFH3m/RwCvtGMgRegKjBuTOiXfeRLpFFX679zneSDQVsnnf7wI/n9uAqPZVU3T9/mX5ywhdnZvsqDmO4iyMI0drAgMBAAGjUDBOMB0GA1UdDgQWBBRM8E5dRqR4pmZBI6l7vdn5WMaQpDAfBgNVHSMEGDAWgBRM8E5dRqR4pmZBI6l7vdn5WMaQpDAMBgNVHRMEBTADAQH/",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm6Um0tGSDqKSDZl47K3s4nykJV7xaYf14gkx/dijGE8D2qSRk/Vdi0aZe5h6jsUXbo+GQlhrXriETkPp7aly2lsihb3VP+iZiF7Mf4rPi7ZLCaj9oqKyHyX/ZpkOH9SoAG5DklVHgT48bPJt7w2CRN+yhjo7hBJ7wdFHRi44bSkoq6uvUUwD4eNZpy9oxyos8Iq9pyAdlGAwiuTwnHEtyxXAlWMRF2lwDm1HB+WBzLLtduhrYUWQwbtRCDGPWo6hR95v0cAr7RjIEXoCowbkzol33kS6RRV+u/c53kg0FbJ53+8CP5/bgKj2VVN0/f5l+csIXZ2b7Kg5juIsjCNHawIDAQAB",
+              "RawSubject": "MBQxEjAQBgNVBAMMCWxvY2FsaG9zdA==",
+              "RawIssuer": "MBQxEjAQBgNVBAMMCWxvY2FsaG9zdA==",
+              "Signature": "ZekLWYNBBiK23+zrAPASyb3GW5Oes/tq6MB6E9Rn4BRMLG+eVfHTZcqr01Fzs8VmA4FAEZ2eUzAeNfz3rJHtZQm5NIxpN4gHmH4gaxoXUEgVP6jxlQW5hy9sBjLJXnJ06Sf8ilK/HhG37ZZbvI3xPWcSQXghhYD5k3Hv2YIvLPflgPPX9iuP2nH3CFcDVh8X2LzifzCbj87S+S2K63WwQV8Jj2opdbCgVWcZ3qmgW34H7A9cMgCf05QpzLmMN40fecMtIrQPpUXk7dKEyfhLEF4S2BV9kihXvxlMztlpH8Kd3rK6RCbL2EgVAU2Zrm+rkMaguseVso2FQj8EhqJYJA==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": {
+                "N": "19648376585777576538267952131049130546613228231065925671171130093440353097125903486601256483783214873272917615877721335054442524831706468796658032296470809746544317698622904588722966648703676498811588298902959469756267427468036257862888742510232316914381371536620047351041657100578289702471587997140078921985020882028442392439639186857641167856553910532672950053237731678235910584414885219013963035105691820854980478069506402212862104266417118297947864463906630407692240399797829605253537383632803237900179223414673853393169081959038510961430082318138820193818758559386855187362235490262759170389015435677119660902251",
+                "E": 65537
+              },
+              "Version": 3,
+              "SerialNumber": 16550732734242177944,
+              "Issuer": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "localhost",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "localhost"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "localhost",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "localhost"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2018-02-14T15:13:18Z",
+              "NotAfter": "2291-11-29T15:13:18Z",
+              "KeyUsage": 0,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBRM8E5dRqR4pmZBI6l7vdn5WMaQpA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFEzwTl1GpHimZkEjqXu92flYxpCk"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": false,
+                  "Value": "MAMBAf8="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": null,
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": true,
+              "MaxPathLen": -1,
+              "MaxPathLenZero": false,
+              "SubjectKeyId": "TPBOXUakeKZmQSOpe73Z+VjGkKQ=",
+              "AuthorityKeyId": "TPBOXUakeKZmQSOpe73Z+VjGkKQ=",
+              "OCSPServer": null,
+              "IssuingCertificateURL": null,
+              "DNSNames": null,
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": null,
+              "PolicyIdentifiers": null
+            }
+          ],
+          "VerifiedChains": null,
+          "SignedCertificateTimestamps": null,
+          "OCSPResponse": null,
+          "TLSUnique": "ZOAxY/1p3rxAEZn3"
+        }
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "https",
+          "Opaque": "",
+          "User": null,
+          "Host": "tower.private",
+          "Path": "/api/v2/projects/",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Accept": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Token 8de1a9980ebd9065bf6c6cf43c99c058b291a2a1"
+          ],
+          "User-Agent": [
+            ""
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 OK",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Allow": [
+            "GET, POST, HEAD, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 09 May 2018 10:11:50 GMT"
+          ],
+          "Server": [
+            "nginx/1.12.2"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000"
+          ],
+          "Vary": [
+            "Accept, Accept-Language, Cookie"
+          ],
+          "X-Api-Node": [
+            "localhost"
+          ],
+          "X-Api-Time": [
+            "0.071s"
+          ],
+          "X-Api-Total-Time": [
+            "0.082s"
+          ],
+          "X-Frame-Options": [
+            "DENY"
+          ]
+        },
+        "Body": "eyJjb3VudCI6MiwibmV4dCI6bnVsbCwicHJldmlvdXMiOm51bGwsInJlc3VsdHMiOlt7ImlkIjoxMywidHlwZSI6InByb2plY3QiLCJ1cmwiOiIvYXBpL3YyL3Byb2plY3RzLzEzLyIsInJlbGF0ZWQiOnsiY3JlYXRlZF9ieSI6Ii9hcGkvdjIvdXNlcnMvMS8iLCJjcmVkZW50aWFsIjoiL2FwaS92Mi9jcmVkZW50aWFscy8xMC8iLCJsYXN0X2pvYiI6Ii9hcGkvdjIvcHJvamVjdF91cGRhdGVzLzM5OS8iLCJub3RpZmljYXRpb25fdGVtcGxhdGVzX2Vycm9yIjoiL2FwaS92Mi9wcm9qZWN0cy8xMy9ub3RpZmljYXRpb25fdGVtcGxhdGVzX2Vycm9yLyIsIm5vdGlmaWNhdGlvbl90ZW1wbGF0ZXNfc3VjY2VzcyI6Ii9hcGkvdjIvcHJvamVjdHMvMTMvbm90aWZpY2F0aW9uX3RlbXBsYXRlc19zdWNjZXNzLyIsIm9iamVjdF9yb2xlcyI6Ii9hcGkvdjIvcHJvamVjdHMvMTMvb2JqZWN0X3JvbGVzLyIsIm5vdGlmaWNhdGlvbl90ZW1wbGF0ZXNfYW55IjoiL2FwaS92Mi9wcm9qZWN0cy8xMy9ub3RpZmljYXRpb25fdGVtcGxhdGVzX2FueS8iLCJwcm9qZWN0X3VwZGF0ZXMiOiIvYXBpL3YyL3Byb2plY3RzLzEzL3Byb2plY3RfdXBkYXRlcy8iLCJ1cGRhdGUiOiIvYXBpL3YyL3Byb2plY3RzLzEzL3VwZGF0ZS8iLCJhY2Nlc3NfbGlzdCI6Ii9hcGkvdjIvcHJvamVjdHMvMTMvYWNjZXNzX2xpc3QvIiwidGVhbXMiOiIvYXBpL3YyL3Byb2plY3RzLzEzL3RlYW1zLyIsInNjbV9pbnZlbnRvcnlfc291cmNlcyI6Ii9hcGkvdjIvcHJvamVjdHMvMTMvc2NtX2ludmVudG9yeV9zb3VyY2VzLyIsImludmVudG9yeV9maWxlcyI6Ii9hcGkvdjIvcHJvamVjdHMvMTMvaW52ZW50b3JpZXMvIiwic2NoZWR1bGVzIjoiL2FwaS92Mi9wcm9qZWN0cy8xMy9zY2hlZHVsZXMvIiwicGxheWJvb2tzIjoiL2FwaS92Mi9wcm9qZWN0cy8xMy9wbGF5Ym9va3MvIiwiYWN0aXZpdHlfc3RyZWFtIjoiL2FwaS92Mi9wcm9qZWN0cy8xMy9hY3Rpdml0eV9zdHJlYW0vIiwib3JnYW5pemF0aW9uIjoiL2FwaS92Mi9vcmdhbml6YXRpb25zLzYvIiwibGFzdF91cGRhdGUiOiIvYXBpL3YyL3Byb2plY3RfdXBkYXRlcy8zOTkvIn0sInN1bW1hcnlfZmllbGRzIjp7Imxhc3Rfam9iIjp7ImlkIjozOTksIm5hbWUiOiJBdXRvLWhlYWwiLCJkZXNjcmlwdGlvbiI6IiIsImZpbmlzaGVkIjoiMjAxOC0wMy0yNlQwOTo0MjozNi4yNjJaIiwic3RhdHVzIjoic3VjY2Vzc2Z1bCIsImZhaWxlZCI6ZmFsc2V9LCJsYXN0X3VwZGF0ZSI6eyJpZCI6Mzk5LCJuYW1lIjoiQXV0by1oZWFsIiwiZGVzY3JpcHRpb24iOiIiLCJzdGF0dXMiOiJzdWNjZXNzZnVsIiwiZmFpbGVkIjpmYWxzZX0sImNyZWRlbnRpYWwiOnsiaWQiOjEwLCJuYW1lIjoiQXV0by1oZWFsIFNDTSIsImRlc2NyaXB0aW9uIjoiIiwia2luZCI6InNjbSIsImNsb3VkIjpmYWxzZSwiY3JlZGVudGlhbF90eXBlX2lkIjoyfSwib3JnYW5pemF0aW9uIjp7ImlkIjo2LCJuYW1lIjoiamhlcm5hbmQiLCJkZXNjcmlwdGlvbiI6IiJ9LCJjcmVhdGVkX2J5Ijp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZmlyc3RfbmFtZSI6IiIsImxhc3RfbmFtZSI6IiJ9LCJvYmplY3Rfcm9sZXMiOnsiYWRtaW5fcm9sZSI6eyJpZCI6MTI5LCJkZXNjcmlwdGlvbiI6IkNhbiBtYW5hZ2UgYWxsIGFzcGVjdHMgb2YgdGhlIHByb2plY3QiLCJuYW1lIjoiQWRtaW4ifSwidXNlX3JvbGUiOnsiaWQiOjEzMSwiZGVzY3JpcHRpb24iOiJDYW4gdXNlIHRoZSBwcm9qZWN0IGluIGEgam9iIHRlbXBsYXRlIiwibmFtZSI6IlVzZSJ9LCJ1cGRhdGVfcm9sZSI6eyJpZCI6MTMyLCJkZXNjcmlwdGlvbiI6Ik1heSB1cGRhdGUgcHJvamVjdCBvciBpbnZlbnRvcnkgb3IgZ3JvdXAgdXNpbmcgdGhlIGNvbmZpZ3VyZWQgc291cmNlIHVwZGF0ZSBzeXN0ZW0iLCJuYW1lIjoiVXBkYXRlIn0sInJlYWRfcm9sZSI6eyJpZCI6MTMwLCJkZXNjcmlwdGlvbiI6Ik1heSB2aWV3IHNldHRpbmdzIGZvciB0aGUgcHJvamVjdCIsIm5hbWUiOiJSZWFkIn19LCJ1c2VyX2NhcGFiaWxpdGllcyI6eyJlZGl0Ijp0cnVlLCJzdGFydCI6dHJ1ZSwic2NoZWR1bGUiOnRydWUsImRlbGV0ZSI6dHJ1ZX19LCJjcmVhdGVkIjoiMjAxOC0wMy0wN1QxMDowMzozMS45MDNaIiwibW9kaWZpZWQiOiIyMDE4LTAzLTI2VDA5OjQyOjM2LjIxMVoiLCJuYW1lIjoiQXV0by1oZWFsIiwiZGVzY3JpcHRpb24iOiIiLCJsb2NhbF9wYXRoIjoiXzEzX19vcGVuc2hpZnRfYXV0b19oZWFsIiwic2NtX3R5cGUiOiJnaXQiLCJzY21fdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL2lyb25jbGFkbG91L29wZW5zaGlmdC1hbnNpYmxlIiwic2NtX2JyYW5jaCI6Im1vbml0b3JpbmctcGxhdGZvcm0iLCJzY21fY2xlYW4iOmZhbHNlLCJzY21fZGVsZXRlX29uX3VwZGF0ZSI6ZmFsc2UsImNyZWRlbnRpYWwiOjEwLCJ0aW1lb3V0IjowLCJsYXN0X2pvYl9ydW4iOiIyMDE4LTAzLTI2VDA5OjQyOjM2LjI2MjM4MVoiLCJsYXN0X2pvYl9mYWlsZWQiOmZhbHNlLCJuZXh0X2pvYl9ydW4iOm51bGwsInN0YXR1cyI6InN1Y2Nlc3NmdWwiLCJvcmdhbml6YXRpb24iOjYsInNjbV9kZWxldGVfb25fbmV4dF91cGRhdGUiOmZhbHNlLCJzY21fdXBkYXRlX29uX2xhdW5jaCI6ZmFsc2UsInNjbV91cGRhdGVfY2FjaGVfdGltZW91dCI6MCwic2NtX3JldmlzaW9uIjoiZDVmNzdlN2ZkZDg1OWQ3OTFkM2RjM2Q0M2JlYWE1NmJhODg2OTQ2OSIsImxhc3RfdXBkYXRlX2ZhaWxlZCI6ZmFsc2UsImxhc3RfdXBkYXRlZCI6IjIwMTgtMDMtMjZUMDk6NDI6MzYuMjYyMzgxWiJ9LHsiaWQiOjE2LCJ0eXBlIjoicHJvamVjdCIsInVybCI6Ii9hcGkvdjIvcHJvamVjdHMvMTYvIiwicmVsYXRlZCI6eyJjcmVhdGVkX2J5IjoiL2FwaS92Mi91c2Vycy8xLyIsImxhc3Rfam9iIjoiL2FwaS92Mi9wcm9qZWN0X3VwZGF0ZXMvNTA5LyIsIm5vdGlmaWNhdGlvbl90ZW1wbGF0ZXNfZXJyb3IiOiIvYXBpL3YyL3Byb2plY3RzLzE2L25vdGlmaWNhdGlvbl90ZW1wbGF0ZXNfZXJyb3IvIiwibm90aWZpY2F0aW9uX3RlbXBsYXRlc19zdWNjZXNzIjoiL2FwaS92Mi9wcm9qZWN0cy8xNi9ub3RpZmljYXRpb25fdGVtcGxhdGVzX3N1Y2Nlc3MvIiwib2JqZWN0X3JvbGVzIjoiL2FwaS92Mi9wcm9qZWN0cy8xNi9vYmplY3Rfcm9sZXMvIiwibm90aWZpY2F0aW9uX3RlbXBsYXRlc19hbnkiOiIvYXBpL3YyL3Byb2plY3RzLzE2L25vdGlmaWNhdGlvbl90ZW1wbGF0ZXNfYW55LyIsInByb2plY3RfdXBkYXRlcyI6Ii9hcGkvdjIvcHJvamVjdHMvMTYvcHJvamVjdF91cGRhdGVzLyIsInVwZGF0ZSI6Ii9hcGkvdjIvcHJvamVjdHMvMTYvdXBkYXRlLyIsImFjY2Vzc19saXN0IjoiL2FwaS92Mi9wcm9qZWN0cy8xNi9hY2Nlc3NfbGlzdC8iLCJ0ZWFtcyI6Ii9hcGkvdjIvcHJvamVjdHMvMTYvdGVhbXMvIiwic2NtX2ludmVudG9yeV9zb3VyY2VzIjoiL2FwaS92Mi9wcm9qZWN0cy8xNi9zY21faW52ZW50b3J5X3NvdXJjZXMvIiwiaW52ZW50b3J5X2ZpbGVzIjoiL2FwaS92Mi9wcm9qZWN0cy8xNi9pbnZlbnRvcmllcy8iLCJzY2hlZHVsZXMiOiIvYXBpL3YyL3Byb2plY3RzLzE2L3NjaGVkdWxlcy8iLCJwbGF5Ym9va3MiOiIvYXBpL3YyL3Byb2plY3RzLzE2L3BsYXlib29rcy8iLCJhY3Rpdml0eV9zdHJlYW0iOiIvYXBpL3YyL3Byb2plY3RzLzE2L2FjdGl2aXR5X3N0cmVhbS8iLCJvcmdhbml6YXRpb24iOiIvYXBpL3YyL29yZ2FuaXphdGlvbnMvNy8iLCJsYXN0X3VwZGF0ZSI6Ii9hcGkvdjIvcHJvamVjdF91cGRhdGVzLzUwOS8ifSwic3VtbWFyeV9maWVsZHMiOnsibGFzdF9qb2IiOnsiaWQiOjUwOSwibmFtZSI6InpnYWxvciIsImRlc2NyaXB0aW9uIjoiIiwiZmluaXNoZWQiOiIyMDE4LTA0LTI1VDEzOjA5OjU2LjMyNVoiLCJzdGF0dXMiOiJzdWNjZXNzZnVsIiwiZmFpbGVkIjpmYWxzZX0sImxhc3RfdXBkYXRlIjp7ImlkIjo1MDksIm5hbWUiOiJ6Z2Fsb3IiLCJkZXNjcmlwdGlvbiI6IiIsInN0YXR1cyI6InN1Y2Nlc3NmdWwiLCJmYWlsZWQiOmZhbHNlfSwib3JnYW5pemF0aW9uIjp7ImlkIjo3LCJuYW1lIjoiemdhbG9yIiwiZGVzY3JpcHRpb24iOiIifSwiY3JlYXRlZF9ieSI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImZpcnN0X25hbWUiOiIiLCJsYXN0X25hbWUiOiIifSwib2JqZWN0X3JvbGVzIjp7ImFkbWluX3JvbGUiOnsiaWQiOjE1MSwiZGVzY3JpcHRpb24iOiJDYW4gbWFuYWdlIGFsbCBhc3BlY3RzIG9mIHRoZSBwcm9qZWN0IiwibmFtZSI6IkFkbWluIn0sInVzZV9yb2xlIjp7ImlkIjoxNTMsImRlc2NyaXB0aW9uIjoiQ2FuIHVzZSB0aGUgcHJvamVjdCBpbiBhIGpvYiB0ZW1wbGF0ZSIsIm5hbWUiOiJVc2UifSwidXBkYXRlX3JvbGUiOnsiaWQiOjE1NCwiZGVzY3JpcHRpb24iOiJNYXkgdXBkYXRlIHByb2plY3Qgb3IgaW52ZW50b3J5IG9yIGdyb3VwIHVzaW5nIHRoZSBjb25maWd1cmVkIHNvdXJjZSB1cGRhdGUgc3lzdGVtIiwibmFtZSI6IlVwZGF0ZSJ9LCJyZWFkX3JvbGUiOnsiaWQiOjE1MiwiZGVzY3JpcHRpb24iOiJNYXkgdmlldyBzZXR0aW5ncyBmb3IgdGhlIHByb2plY3QiLCJuYW1lIjoiUmVhZCJ9fSwidXNlcl9jYXBhYmlsaXRpZXMiOnsiZWRpdCI6dHJ1ZSwic3RhcnQiOnRydWUsInNjaGVkdWxlIjp0cnVlLCJkZWxldGUiOnRydWV9fSwiY3JlYXRlZCI6IjIwMTgtMDQtMDJUMDk6MjI6NDMuMjMxWiIsIm1vZGlmaWVkIjoiMjAxOC0wNC0yNVQxMzowOTo1Ni4yNzlaIiwibmFtZSI6InpnYWxvciIsImRlc2NyaXB0aW9uIjoiIiwibG9jYWxfcGF0aCI6Il8xNl9femdhbG9yIiwic2NtX3R5cGUiOiJnaXQiLCJzY21fdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL3pnYWxvci9hdXRvaGVhbC1wbGF5Ym9va3MiLCJzY21fYnJhbmNoIjoibWFzdGVyIiwic2NtX2NsZWFuIjpmYWxzZSwic2NtX2RlbGV0ZV9vbl91cGRhdGUiOmZhbHNlLCJjcmVkZW50aWFsIjpudWxsLCJ0aW1lb3V0IjowLCJsYXN0X2pvYl9ydW4iOiIyMDE4LTA0LTI1VDEzOjA5OjU2LjMyNTc5OVoiLCJsYXN0X2pvYl9mYWlsZWQiOmZhbHNlLCJuZXh0X2pvYl9ydW4iOm51bGwsInN0YXR1cyI6InN1Y2Nlc3NmdWwiLCJvcmdhbml6YXRpb24iOjcsInNjbV9kZWxldGVfb25fbmV4dF91cGRhdGUiOmZhbHNlLCJzY21fdXBkYXRlX29uX2xhdW5jaCI6ZmFsc2UsInNjbV91cGRhdGVfY2FjaGVfdGltZW91dCI6MCwic2NtX3JldmlzaW9uIjoiYjViYTk1ZDQ1ZWI2MWFlOTcwZmJhOWQxOTk3NDU4ZTBiMzQ3NWYyMyIsImxhc3RfdXBkYXRlX2ZhaWxlZCI6ZmFsc2UsImxhc3RfdXBkYXRlZCI6IjIwMTgtMDQtMjVUMTM6MDk6NTYuMzI1Nzk5WiJ9XX0=",
+        "ContentLength": -1,
+        "TransferEncoding": [
+          "chunked"
+        ],
+        "Trailer": null,
+        "TLS": {
+          "Version": 771,
+          "HandshakeComplete": true,
+          "DidResume": false,
+          "CipherSuite": 49200,
+          "NegotiatedProtocol": "",
+          "NegotiatedProtocolIsMutual": true,
+          "ServerName": "",
+          "PeerCertificates": [
+            {
+              "Raw": "MIIC/TCCAeWgAwIBAgIJAOWwA7t070OYMA0GCSqGSIb3DQEBCwUAMBQxEjAQBgNVBAMMCWxvY2FsaG9zdDAgFw0xODAyMTQxNTEzMThaGA8yMjkxMTEyOTE1MTMxOFowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm6Um0tGSDqKSDZl47K3s4nykJV7xaYf14gkx/dijGE8D2qSRk/Vdi0aZe5h6jsUXbo+GQlhrXriETkPp7aly2lsihb3VP+iZiF7Mf4rPi7ZLCaj9oqKyHyX/ZpkOH9SoAG5DklVHgT48bPJt7w2CRN+yhjo7hBJ7wdFHRi44bSkoq6uvUUwD4eNZpy9oxyos8Iq9pyAdlGAwiuTwnHEtyxXAlWMRF2lwDm1HB+WBzLLtduhrYUWQwbtRCDGPWo6hR95v0cAr7RjIEXoCowbkzol33kS6RRV+u/c53kg0FbJ53+8CP5/bgKj2VVN0/f5l+csIXZ2b7Kg5juIsjCNHawIDAQABo1AwTjAdBgNVHQ4EFgQUTPBOXUakeKZmQSOpe73Z+VjGkKQwHwYDVR0jBBgwFoAUTPBOXUakeKZmQSOpe73Z+VjGkKQwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAZekLWYNBBiK23+zrAPASyb3GW5Oes/tq6MB6E9Rn4BRMLG+eVfHTZcqr01Fzs8VmA4FAEZ2eUzAeNfz3rJHtZQm5NIxpN4gHmH4gaxoXUEgVP6jxlQW5hy9sBjLJXnJ06Sf8ilK/HhG37ZZbvI3xPWcSQXghhYD5k3Hv2YIvLPflgPPX9iuP2nH3CFcDVh8X2LzifzCbj87S+S2K63WwQV8Jj2opdbCgVWcZ3qmgW34H7A9cMgCf05QpzLmMN40fecMtIrQPpUXk7dKEyfhLEF4S2BV9kihXvxlMztlpH8Kd3rK6RCbL2EgVAU2Zrm+rkMaguseVso2FQj8EhqJYJA==",
+              "RawTBSCertificate": "MIIB5aADAgECAgkA5bADu3TvQ5gwDQYJKoZIhvcNAQELBQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MCAXDTE4MDIxNDE1MTMxOFoYDzIyOTExMTI5MTUxMzE4WjAUMRIwEAYDVQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCbpSbS0ZIOopINmXjsrezifKQlXvFph/XiCTH92KMYTwPapJGT9V2LRpl7mHqOxRduj4ZCWGteuIROQ+ntqXLaWyKFvdU/6JmIXsx/is+LtksJqP2iorIfJf9mmQ4f1KgAbkOSVUeBPjxs8m3vDYJE37KGOjuEEnvB0UdGLjhtKSirq69RTAPh41mnL2jHKizwir2nIB2UYDCK5PCccS3LFcCVYxEXaXAObUcH5YHMsu126GthRZDBu1EIMY9ajqFH3m/RwCvtGMgRegKjBuTOiXfeRLpFFX679zneSDQVsnnf7wI/n9uAqPZVU3T9/mX5ywhdnZvsqDmO4iyMI0drAgMBAAGjUDBOMB0GA1UdDgQWBBRM8E5dRqR4pmZBI6l7vdn5WMaQpDAfBgNVHSMEGDAWgBRM8E5dRqR4pmZBI6l7vdn5WMaQpDAMBgNVHRMEBTADAQH/",
+              "RawSubjectPublicKeyInfo": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAm6Um0tGSDqKSDZl47K3s4nykJV7xaYf14gkx/dijGE8D2qSRk/Vdi0aZe5h6jsUXbo+GQlhrXriETkPp7aly2lsihb3VP+iZiF7Mf4rPi7ZLCaj9oqKyHyX/ZpkOH9SoAG5DklVHgT48bPJt7w2CRN+yhjo7hBJ7wdFHRi44bSkoq6uvUUwD4eNZpy9oxyos8Iq9pyAdlGAwiuTwnHEtyxXAlWMRF2lwDm1HB+WBzLLtduhrYUWQwbtRCDGPWo6hR95v0cAr7RjIEXoCowbkzol33kS6RRV+u/c53kg0FbJ53+8CP5/bgKj2VVN0/f5l+csIXZ2b7Kg5juIsjCNHawIDAQAB",
+              "RawSubject": "MBQxEjAQBgNVBAMMCWxvY2FsaG9zdA==",
+              "RawIssuer": "MBQxEjAQBgNVBAMMCWxvY2FsaG9zdA==",
+              "Signature": "ZekLWYNBBiK23+zrAPASyb3GW5Oes/tq6MB6E9Rn4BRMLG+eVfHTZcqr01Fzs8VmA4FAEZ2eUzAeNfz3rJHtZQm5NIxpN4gHmH4gaxoXUEgVP6jxlQW5hy9sBjLJXnJ06Sf8ilK/HhG37ZZbvI3xPWcSQXghhYD5k3Hv2YIvLPflgPPX9iuP2nH3CFcDVh8X2LzifzCbj87S+S2K63WwQV8Jj2opdbCgVWcZ3qmgW34H7A9cMgCf05QpzLmMN40fecMtIrQPpUXk7dKEyfhLEF4S2BV9kihXvxlMztlpH8Kd3rK6RCbL2EgVAU2Zrm+rkMaguseVso2FQj8EhqJYJA==",
+              "SignatureAlgorithm": 4,
+              "PublicKeyAlgorithm": 1,
+              "PublicKey": {
+                "N": "19648376585777576538267952131049130546613228231065925671171130093440353097125903486601256483783214873272917615877721335054442524831706468796658032296470809746544317698622904588722966648703676498811588298902959469756267427468036257862888742510232316914381371536620047351041657100578289702471587997140078921985020882028442392439639186857641167856553910532672950053237731678235910584414885219013963035105691820854980478069506402212862104266417118297947864463906630407692240399797829605253537383632803237900179223414673853393169081959038510961430082318138820193818758559386855187362235490262759170389015435677119660902251",
+                "E": 65537
+              },
+              "Version": 3,
+              "SerialNumber": 16550732734242177944,
+              "Issuer": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "localhost",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "localhost"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "Subject": {
+                "Country": null,
+                "Organization": null,
+                "OrganizationalUnit": null,
+                "Locality": null,
+                "Province": null,
+                "StreetAddress": null,
+                "PostalCode": null,
+                "SerialNumber": "",
+                "CommonName": "localhost",
+                "Names": [
+                  {
+                    "Type": [
+                      2,
+                      5,
+                      4,
+                      3
+                    ],
+                    "Value": "localhost"
+                  }
+                ],
+                "ExtraNames": null
+              },
+              "NotBefore": "2018-02-14T15:13:18Z",
+              "NotAfter": "2291-11-29T15:13:18Z",
+              "KeyUsage": 0,
+              "Extensions": [
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    14
+                  ],
+                  "Critical": false,
+                  "Value": "BBRM8E5dRqR4pmZBI6l7vdn5WMaQpA=="
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    35
+                  ],
+                  "Critical": false,
+                  "Value": "MBaAFEzwTl1GpHimZkEjqXu92flYxpCk"
+                },
+                {
+                  "Id": [
+                    2,
+                    5,
+                    29,
+                    19
+                  ],
+                  "Critical": false,
+                  "Value": "MAMBAf8="
+                }
+              ],
+              "ExtraExtensions": null,
+              "UnhandledCriticalExtensions": null,
+              "ExtKeyUsage": null,
+              "UnknownExtKeyUsage": null,
+              "BasicConstraintsValid": true,
+              "IsCA": true,
+              "MaxPathLen": -1,
+              "MaxPathLenZero": false,
+              "SubjectKeyId": "TPBOXUakeKZmQSOpe73Z+VjGkKQ=",
+              "AuthorityKeyId": "TPBOXUakeKZmQSOpe73Z+VjGkKQ=",
+              "OCSPServer": null,
+              "IssuingCertificateURL": null,
+              "DNSNames": null,
+              "EmailAddresses": null,
+              "IPAddresses": null,
+              "URIs": null,
+              "PermittedDNSDomainsCritical": false,
+              "PermittedDNSDomains": null,
+              "ExcludedDNSDomains": null,
+              "PermittedIPRanges": null,
+              "ExcludedIPRanges": null,
+              "PermittedEmailAddresses": null,
+              "ExcludedEmailAddresses": null,
+              "PermittedURIDomains": null,
+              "ExcludedURIDomains": null,
+              "CRLDistributionPoints": null,
+              "PolicyIdentifiers": null
+            }
+          ],
+          "VerifiedChains": null,
+          "SignedCertificateTimestamps": null,
+          "OCSPResponse": null,
+          "TLSUnique": "ZOAxY/1p3rxAEZn3"
+        }
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    }
+  ]
+}

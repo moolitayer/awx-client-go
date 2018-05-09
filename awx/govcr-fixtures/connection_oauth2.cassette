@@ -1,0 +1,252 @@
+{
+  "Name": "connection_proxy",
+  "Path": "",
+  "Tracks": [
+    {
+      "Request": {
+        "Method": "HEAD",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "localhost:9100",
+          "Path": "/api/o/",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Accept": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Basic YWRtaW46cGFzc3dvcmQ="
+          ],
+          "User-Agent": [
+            ""
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 OK",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Allow": [
+            "GET, HEAD, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "95"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 09 May 2018 10:04:35 GMT"
+          ],
+          "Server": [
+            "nginx/1.12.2"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000"
+          ],
+          "Vary": [
+            "Accept, Accept-Language, Cookie"
+          ],
+          "X-Api-Node": [
+            "awx"
+          ],
+          "X-Api-Time": [
+            "0.151s"
+          ],
+          "X-Api-Total-Time": [
+            "0.153s"
+          ]
+        },
+        "Body": null,
+        "ContentLength": 95,
+        "TransferEncoding": null,
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "POST",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "localhost:9100",
+          "Path": "/api/v2/users/admin/personal_tokens/",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Accept": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Basic YWRtaW46cGFzc3dvcmQ="
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            ""
+          ]
+        },
+        "Body": "eyJkZXNjcmlwdGlvbiI6IkFXWCBHbyBDbGllbnQiLCJhcHBsaWNhdGlvbiI6bnVsbCwic2NvcGUiOiJ3cml0ZSJ9"
+      },
+      "Response": {
+        "Status": "201 Created",
+        "StatusCode": 201,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Allow": [
+            "GET, POST, HEAD, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "498"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 09 May 2018 10:04:35 GMT"
+          ],
+          "Location": [
+            "/api/v2/tokens/2/"
+          ],
+          "Server": [
+            "nginx/1.12.2"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000"
+          ],
+          "Vary": [
+            "Accept, Accept-Language, Cookie"
+          ],
+          "X-Api-Node": [
+            "awx"
+          ],
+          "X-Api-Time": [
+            "0.046s"
+          ],
+          "X-Api-Total-Time": [
+            "0.051s"
+          ]
+        },
+        "Body": "eyJpZCI6MiwidHlwZSI6Im9fYXV0aDJfYWNjZXNzX3Rva2VuIiwidXJsIjoiL2FwaS92Mi90b2tlbnMvMi8iLCJyZWxhdGVkIjp7InVzZXIiOiIvYXBpL3YyL3VzZXJzLzEvIiwiYWN0aXZpdHlfc3RyZWFtIjoiL2FwaS92Mi90b2tlbnMvMi9hY3Rpdml0eV9zdHJlYW0vIn0sInN1bW1hcnlfZmllbGRzIjp7InVzZXIiOnsiaWQiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdF9uYW1lIjoiIiwibGFzdF9uYW1lIjoiIn19LCJjcmVhdGVkIjoiMjAxOC0wNS0wOVQxMDowNDozNS41MDIwMDFaIiwibW9kaWZpZWQiOiIyMDE4LTA1LTA5VDEwOjA0OjM1LjUwODU3MFoiLCJkZXNjcmlwdGlvbiI6IkFXWCBHbyBDbGllbnQiLCJ1c2VyIjoxLCJ0b2tlbiI6IlY5QnFsTTVkTlhmYW5CaTVyUXVGVk9DYndSdUREViIsInJlZnJlc2hfdG9rZW4iOm51bGwsImFwcGxpY2F0aW9uIjpudWxsLCJleHBpcmVzIjoiMzAxNy0wOS0wOVQxMDowNDozNS41MDE1MThaIiwic2NvcGUiOiJ3cml0ZSJ9",
+        "ContentLength": 498,
+        "TransferEncoding": null,
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    },
+    {
+      "Request": {
+        "Method": "GET",
+        "URL": {
+          "Scheme": "http",
+          "Opaque": "",
+          "User": null,
+          "Host": "localhost:9100",
+          "Path": "/api/v2/projects/",
+          "RawPath": "",
+          "ForceQuery": false,
+          "RawQuery": "",
+          "Fragment": ""
+        },
+        "Header": {
+          "Accept": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Bearer V9BqlM5dNXfanBi5rQuFVOCbwRuDDV"
+          ],
+          "User-Agent": [
+            ""
+          ]
+        },
+        "Body": ""
+      },
+      "Response": {
+        "Status": "200 OK",
+        "StatusCode": 200,
+        "Proto": "HTTP/1.1",
+        "ProtoMajor": 1,
+        "ProtoMinor": 1,
+        "Header": {
+          "Allow": [
+            "GET, POST, HEAD, OPTIONS"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Language": [
+            "en"
+          ],
+          "Content-Length": [
+            "2339"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Date": [
+            "Wed, 09 May 2018 10:04:35 GMT"
+          ],
+          "Server": [
+            "nginx/1.12.2"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15768000"
+          ],
+          "Vary": [
+            "Accept, Accept-Language, Cookie"
+          ],
+          "X-Api-Node": [
+            "awx"
+          ],
+          "X-Api-Time": [
+            "0.122s"
+          ],
+          "X-Api-Total-Time": [
+            "0.127s"
+          ]
+        },
+        "Body": "eyJjb3VudCI6MSwibmV4dCI6bnVsbCwicHJldmlvdXMiOm51bGwsInJlc3VsdHMiOlt7ImlkIjo0LCJ0eXBlIjoicHJvamVjdCIsInVybCI6Ii9hcGkvdjIvcHJvamVjdHMvNC8iLCJyZWxhdGVkIjp7ImNyZWF0ZWRfYnkiOiIvYXBpL3YyL3VzZXJzLzEvIiwibW9kaWZpZWRfYnkiOiIvYXBpL3YyL3VzZXJzLzEvIiwibm90aWZpY2F0aW9uX3RlbXBsYXRlc19lcnJvciI6Ii9hcGkvdjIvcHJvamVjdHMvNC9ub3RpZmljYXRpb25fdGVtcGxhdGVzX2Vycm9yLyIsIm5vdGlmaWNhdGlvbl90ZW1wbGF0ZXNfc3VjY2VzcyI6Ii9hcGkvdjIvcHJvamVjdHMvNC9ub3RpZmljYXRpb25fdGVtcGxhdGVzX3N1Y2Nlc3MvIiwib2JqZWN0X3JvbGVzIjoiL2FwaS92Mi9wcm9qZWN0cy80L29iamVjdF9yb2xlcy8iLCJub3RpZmljYXRpb25fdGVtcGxhdGVzX2FueSI6Ii9hcGkvdjIvcHJvamVjdHMvNC9ub3RpZmljYXRpb25fdGVtcGxhdGVzX2FueS8iLCJjb3B5IjoiL2FwaS92Mi9wcm9qZWN0cy80L2NvcHkvIiwicHJvamVjdF91cGRhdGVzIjoiL2FwaS92Mi9wcm9qZWN0cy80L3Byb2plY3RfdXBkYXRlcy8iLCJ1cGRhdGUiOiIvYXBpL3YyL3Byb2plY3RzLzQvdXBkYXRlLyIsImFjY2Vzc19saXN0IjoiL2FwaS92Mi9wcm9qZWN0cy80L2FjY2Vzc19saXN0LyIsInRlYW1zIjoiL2FwaS92Mi9wcm9qZWN0cy80L3RlYW1zLyIsInNjbV9pbnZlbnRvcnlfc291cmNlcyI6Ii9hcGkvdjIvcHJvamVjdHMvNC9zY21faW52ZW50b3J5X3NvdXJjZXMvIiwiaW52ZW50b3J5X2ZpbGVzIjoiL2FwaS92Mi9wcm9qZWN0cy80L2ludmVudG9yaWVzLyIsInNjaGVkdWxlcyI6Ii9hcGkvdjIvcHJvamVjdHMvNC9zY2hlZHVsZXMvIiwicGxheWJvb2tzIjoiL2FwaS92Mi9wcm9qZWN0cy80L3BsYXlib29rcy8iLCJhY3Rpdml0eV9zdHJlYW0iOiIvYXBpL3YyL3Byb2plY3RzLzQvYWN0aXZpdHlfc3RyZWFtLyIsIm9yZ2FuaXphdGlvbiI6Ii9hcGkvdjIvb3JnYW5pemF0aW9ucy8xLyJ9LCJzdW1tYXJ5X2ZpZWxkcyI6eyJvcmdhbml6YXRpb24iOnsiaWQiOjEsIm5hbWUiOiJEZWZhdWx0IiwiZGVzY3JpcHRpb24iOiIifSwiY3JlYXRlZF9ieSI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImZpcnN0X25hbWUiOiIiLCJsYXN0X25hbWUiOiIifSwibW9kaWZpZWRfYnkiOnsiaWQiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdF9uYW1lIjoiIiwibGFzdF9uYW1lIjoiIn0sIm9iamVjdF9yb2xlcyI6eyJhZG1pbl9yb2xlIjp7ImlkIjoxNCwiZGVzY3JpcHRpb24iOiJDYW4gbWFuYWdlIGFsbCBhc3BlY3RzIG9mIHRoZSBwcm9qZWN0IiwibmFtZSI6IkFkbWluIn0sInVzZV9yb2xlIjp7ImlkIjoxNiwiZGVzY3JpcHRpb24iOiJDYW4gdXNlIHRoZSBwcm9qZWN0IGluIGEgam9iIHRlbXBsYXRlIiwibmFtZSI6IlVzZSJ9LCJ1cGRhdGVfcm9sZSI6eyJpZCI6MTcsImRlc2NyaXB0aW9uIjoiTWF5IHVwZGF0ZSBwcm9qZWN0IG9yIGludmVudG9yeSBvciBncm91cCB1c2luZyB0aGUgY29uZmlndXJlZCBzb3VyY2UgdXBkYXRlIHN5c3RlbSIsIm5hbWUiOiJVcGRhdGUifSwicmVhZF9yb2xlIjp7ImlkIjoxNSwiZGVzY3JpcHRpb24iOiJNYXkgdmlldyBzZXR0aW5ncyBmb3IgdGhlIHByb2plY3QiLCJuYW1lIjoiUmVhZCJ9fSwidXNlcl9jYXBhYmlsaXRpZXMiOnsiZWRpdCI6dHJ1ZSwic3RhcnQiOnRydWUsImNvcHkiOnRydWUsInNjaGVkdWxlIjp0cnVlLCJkZWxldGUiOnRydWV9fSwiY3JlYXRlZCI6IjIwMTgtMDUtMDlUMTA6MDE6NTYuNDc5MDI4WiIsIm1vZGlmaWVkIjoiMjAxOC0wNS0wOVQxMDowMTo1Ni41MzEyNDhaIiwibmFtZSI6IkRlbW8gUHJvamVjdCIsImRlc2NyaXB0aW9uIjoiIiwibG9jYWxfcGF0aCI6Il80X19kZW1vX3Byb2plY3QiLCJzY21fdHlwZSI6ImdpdCIsInNjbV91cmwiOiJodHRwczovL2dpdGh1Yi5jb20vYW5zaWJsZS9hbnNpYmxlLXRvd2VyLXNhbXBsZXMiLCJzY21fYnJhbmNoIjoiIiwic2NtX2NsZWFuIjpmYWxzZSwic2NtX2RlbGV0ZV9vbl91cGRhdGUiOmZhbHNlLCJjcmVkZW50aWFsIjpudWxsLCJ0aW1lb3V0IjowLCJsYXN0X2pvYl9ydW4iOm51bGwsImxhc3Rfam9iX2ZhaWxlZCI6ZmFsc2UsIm5leHRfam9iX3J1biI6bnVsbCwic3RhdHVzIjoibmV2ZXIgdXBkYXRlZCIsIm9yZ2FuaXphdGlvbiI6MSwic2NtX2RlbGV0ZV9vbl9uZXh0X3VwZGF0ZSI6ZmFsc2UsInNjbV91cGRhdGVfb25fbGF1bmNoIjp0cnVlLCJzY21fdXBkYXRlX2NhY2hlX3RpbWVvdXQiOjAsInNjbV9yZXZpc2lvbiI6IiIsImN1c3RvbV92aXJ0dWFsZW52IjpudWxsLCJsYXN0X3VwZGF0ZV9mYWlsZWQiOmZhbHNlLCJsYXN0X3VwZGF0ZWQiOm51bGx9XX0=",
+        "ContentLength": 2339,
+        "TransferEncoding": null,
+        "Trailer": null,
+        "TLS": null
+      },
+      "ErrType": "",
+      "ErrMsg": ""
+    }
+  ]
+}
