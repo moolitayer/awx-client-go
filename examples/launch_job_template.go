@@ -76,10 +76,20 @@ func main() {
 	// Parse the command line:
 	flag.Parse()
 
-	extraVars, err := parseExtraVars(extraVarsFlag)
-	if err != nil {
-		fmt.Println("Failed to parse extra-vars %s", extraVarsFlag, err)
-		return
+	var extraVars map[string]interface{}
+	var err error
+	if len(extraVarsFlag) > 0 {
+		extraVars, err = parseExtraVars(extraVarsFlag)
+		if err != nil {
+			fmt.Println("Failed to parse extra-vars %s", extraVarsFlag, err)
+			return
+		}
+	} else {
+		// create default extraVars
+		extraVars = map[string]interface{}{
+			"node":  "example.com",
+			"count": 4,
+		}
 	}
 
 	// Connect to the server, and remember to close the connection:
@@ -147,7 +157,6 @@ func parseExtraVars(input string) (output map[string]interface{}, err error) {
 		output = make(map[string]interface{})
 	}
 	for _, currVar := range variables {
-		fmt.Println("parsing", currVar)
 		list := strings.SplitN(currVar, "=", 2)
 		if len(list) != 2 {
 			err = fmt.Errorf("bad format of extra-var")
@@ -157,7 +166,6 @@ func parseExtraVars(input string) (output map[string]interface{}, err error) {
 		key := list[0]
 		val := list[1]
 
-		fmt.Println("umnarshalling", val)
 		if val[0] == '{' {
 			// handle complex json
 			var parsedJson interface{}
