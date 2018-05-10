@@ -131,6 +131,16 @@ func main() {
 	for _, t := range templatesResponse.Results() {
 		launchResource := connection.JobTemplates().Id(t.Id()).Launch()
 
+		if limit != "" && !t.AskLimitOnLaunch() {
+			glog.Warningf("About to launch template '%s' with limit '%s', but 'prompt-on-launch' is false. Limit will be ignored",
+				template, limit)
+		}
+
+		if extraVars != nil && !t.AskVarsOnLaunch() {
+			glog.Warningf("About to launch template '%s' with extra-vars, but 'prompt-on-launch' is false. Extra Variables will be ignored",
+				template)
+		}
+
 		response, err := launchResource.Post().
 			Limit(limit).
 			ExtraVars(extraVars).
