@@ -81,7 +81,7 @@ func main() {
 	if len(extraVarsFlag) > 0 {
 		extraVars, err = parseExtraVars(extraVarsFlag)
 		if err != nil {
-			fmt.Println("Failed to parse extra-vars %s", extraVarsFlag, err)
+			fmt.Printf("Failed to parse extra-vars %s: %v\n", extraVarsFlag, err)
 			return
 		}
 	} else {
@@ -114,13 +114,13 @@ func main() {
 		Send()
 
 	if err != nil {
-		fmt.Println("Failed to get template resource %v", err)
+		fmt.Printf("Failed to get template resource %v\n", err)
 		return
 	}
 
 	if templatesResponse.Count() == 0 {
-		fmt.Println(
-			"Template '%s' not found in project '%s'",
+		fmt.Printf(
+			"Template '%s' not found in project '%s'\n",
 			template,
 			project,
 		)
@@ -147,7 +147,7 @@ func main() {
 			ExtraVar("my-var", "example-val").
 			Send()
 		if err != nil {
-			fmt.Println("Failed to get launch job %v", err)
+			fmt.Printf("Failed to get launch job %v\n", err)
 			return
 		}
 
