@@ -10,6 +10,10 @@ Install awx-client-go using the "go-get" command:
 go get github.com/golang/glog # Dependency
 go get github.com/moolitayer/awx-client-go/awx
 ```
+For development also install goimports, needed for "make verify"
+```
+go get golang.org/x/tools/cmd/goimports
+```
 
 ## Usage
 ### import

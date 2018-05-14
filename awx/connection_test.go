@@ -63,5 +63,4 @@ func TestFilterJsonBytes(t *testing.T) {
 		t.Errorf("Expected %s, got %s", expected, result)
 	}
 
-
 }
