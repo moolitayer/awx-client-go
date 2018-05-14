@@ -295,7 +295,7 @@ func (c *Connection) ensureToken() error {
 // getToken requests a new authentication token.
 //
 func (c *Connection) getToken() (err error) {
-	if c.OAuth2Supported() {
+	if c.oAuth2Supported() {
 		err = c.getPATToken()
 	} else {
 		err = c.getAuthToken()
@@ -306,7 +306,7 @@ func (c *Connection) getToken() (err error) {
 	return nil
 }
 
-func (c *Connection) OAuth2Supported() bool {
+func (c *Connection) oAuth2Supported() bool {
 	err := c.head("", "o")
 	if err != nil {
 		// Can fail due to other reasons(i.e network availability) and in that case
