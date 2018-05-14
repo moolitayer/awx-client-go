@@ -18,19 +18,29 @@ limitations under the License.
 
 package awx
 
+// JobStatus represents possible values for AWX job statuses.
 type JobStatus string
 
 const (
-	JobStatusNew       JobStatus = "new"
-	JobStatusPending   JobStatus = "pending"
-	JobStatusWaiting   JobStatus = "waiting"
-	JobStatusRunning   JobStatus = "running"
+	// JobStatusNew represents and AWX job with status new
+	JobStatusNew JobStatus = "new"
+	// JobStatusPending represents and AWX job with status pending.
+	JobStatusPending JobStatus = "pending"
+	// JobStatusWaiting represents and AWX job with status waiting.
+	JobStatusWaiting JobStatus = "waiting"
+	// JobStatusRunning represents and AWX job with status running.
+	JobStatusRunning JobStatus = "running"
+	// JobStatusSuccesful represents and AWX job with status successful.
 	JobStatusSuccesful JobStatus = "successful"
-	JobStatusFailed    JobStatus = "failed"
-	JobStatusError     JobStatus = "error"
+	// JobStatusFailed represents and AWX job with status failed.
+	JobStatusFailed JobStatus = "failed"
+	// JobStatusError represents and AWX job with status error.
+	JobStatusError JobStatus = "error"
+	// JobStatusCancelled represents and AWX job with status cancelled.
 	JobStatusCancelled JobStatus = "cancelled"
 )
 
+// Job Represents an AWX job.
 type Job struct {
 	id     int
 	status JobStatus
@@ -41,10 +51,12 @@ func (j *Job) ID() int {
 	return j.id
 }
 
+// Status is the status of this job in AWX. See JobStatus.
 func (j *Job) Status() JobStatus {
 	return j.status
 }
 
+// IsFinished returns true if the state of this job's state is considered finished
 func (j *Job) IsFinished() bool {
 	switch j.status {
 	case
@@ -57,6 +69,7 @@ func (j *Job) IsFinished() bool {
 	return false
 }
 
+//IsSuccessful returns true if the state of this job is JobStatusSuccesful
 func (j *Job) IsSuccessful() bool {
 	return j.status == JobStatusSuccesful
 }

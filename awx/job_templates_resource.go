@@ -25,10 +25,12 @@ import (
 	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
+// JobTemplatesResource is a Resource for a JobTemplate.
 type JobTemplatesResource struct {
 	Resource
 }
 
+// NewJobTemplatesResource is used to create a new JobTemplatesResource.
 func NewJobTemplatesResource(connection *Connection, path string) *JobTemplatesResource {
 	resource := new(JobTemplatesResource)
 	resource.connection = connection
@@ -36,25 +38,30 @@ func NewJobTemplatesResource(connection *Connection, path string) *JobTemplatesR
 	return resource
 }
 
+// Get reutnrs a JobTemplatesGetRequest for this JobTemplatesResource.
 func (r *JobTemplatesResource) Get() *JobTemplatesGetRequest {
 	request := new(JobTemplatesGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
+// ID sets the identifier of this JobTemplatesResource.
 func (r *JobTemplatesResource) ID(id int) *JobTemplateResource {
 	return NewJobTemplateResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
+// JobTemplatesGetRequest represents a GET request on JobTemplates
 type JobTemplatesGetRequest struct {
 	Request
 }
 
+// Filter adds a filter for this JobTemplatesGetRequest.
 func (r *JobTemplatesGetRequest) Filter(name string, value interface{}) *JobTemplatesGetRequest {
 	r.addFilter(name, value)
 	return r
 }
 
+// Send initiate a round trip against an AWX server.
 func (r *JobTemplatesGetRequest) Send() (response *JobTemplatesGetResponse, err error) {
 	output := new(data.JobTemplatesGetResponse)
 	err = r.get(output)
@@ -76,12 +83,14 @@ func (r *JobTemplatesGetRequest) Send() (response *JobTemplatesGetResponse, err 
 	return
 }
 
+// JobTemplatesGetResponse represents a GET request for JobTemplates.
 type JobTemplatesGetResponse struct {
 	ListGetResponse
 
 	results []*JobTemplate
 }
 
+// Results retusns JobTemplate results from this JobTemplatesGetResponse.
 func (r *JobTemplatesGetResponse) Results() []*JobTemplate {
 	return r.results
 }

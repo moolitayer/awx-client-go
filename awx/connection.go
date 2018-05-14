@@ -36,6 +36,7 @@ import (
 //
 const Version = "0.0.0"
 
+// ConnectionBuilder is used to build a Connection to a AWX server.
 type ConnectionBuilder struct {
 	url      string
 	proxy    string
@@ -51,6 +52,7 @@ type ConnectionBuilder struct {
 	caFiles []string
 }
 
+// Connection is used for interacting with an AWX server.
 type Connection struct {
 	// Basic data:
 	base     string
@@ -66,6 +68,7 @@ type Connection struct {
 	client *http.Client
 }
 
+// NewConnectionBuilder is used to create a new ConnectionBuilder.
 func NewConnectionBuilder() *ConnectionBuilder {
 	// Create an empty builder:
 	b := new(ConnectionBuilder)
@@ -76,21 +79,28 @@ func NewConnectionBuilder() *ConnectionBuilder {
 	return b
 }
 
+// URL sets the URL of the target AWX server.
 func (b *ConnectionBuilder) URL(url string) *ConnectionBuilder {
 	b.url = url
 	return b
 }
 
+// Proxy sets an http proxy used by outgoing connections to AWX.
 func (b *ConnectionBuilder) Proxy(proxy string) *ConnectionBuilder {
 	b.proxy = proxy
 	return b
 }
 
+// Username specifies a user for basic authentication against the AWX server.
+// The client will attempt to use the basic authentication information to
+// acquire an authentication token.
 func (b *ConnectionBuilder) Username(username string) *ConnectionBuilder {
 	b.username = username
 	return b
 }
 
+// Password set a basic authentication against an AWX server.
+// see Username()
 func (b *ConnectionBuilder) Password(password string) *ConnectionBuilder {
 	b.password = password
 	return b
@@ -99,31 +109,33 @@ func (b *ConnectionBuilder) Password(password string) *ConnectionBuilder {
 // Agent sets the value of the HTTP user agent header that the client will use in all
 // the requests sent to the server. This is optional, and the default value is the name
 // of the client followed by the version number, for example 'GoClient/0.0.1'.
-//
 func (b *ConnectionBuilder) Agent(agent string) *ConnectionBuilder {
 	b.agent = agent
 	return b
 }
 
+// Token sets a pre OAUTH2 token acquired from the authtoken/ endpoint.
+// Token works with AWX < 1.0.5 and Ansible tower < 3.3.
 func (b *ConnectionBuilder) Token(token string) *ConnectionBuilder {
 	b.token = token
 	return b
 }
 
+// Bearer sets an OAuth2 PAT(personal authentication token)
+// and works since AWX 1.0.5 and Ansible Tower 3.3.
 func (b *ConnectionBuilder) Bearer(bearer string) *ConnectionBuilder {
 	b.bearer = bearer
 	return b
 }
 
+// Insecure can be specified to disable TLS verification. Insecure Defaults to false.
 func (b *ConnectionBuilder) Insecure(insecure bool) *ConnectionBuilder {
 	b.insecure = insecure
 	return b
 }
 
-// CACertificates adds a list of CA certificates that will be trusted when verifying the
-// certificates presented by the AWX server. The certs parameter must be a list of PEM encoded
-// certificates.
-//
+// CACertificates adds a list of PEM encoded CA certificates trusted when verifying the
+// certificates presented by the AWX server.
 func (b *ConnectionBuilder) CACertificates(certs []byte) *ConnectionBuilder {
 	if len(certs) > 0 {
 		b.caCerts = append(b.caCerts, certs)
@@ -131,10 +143,9 @@ func (b *ConnectionBuilder) CACertificates(certs []byte) *ConnectionBuilder {
 	return b
 }
 
-// CAFile sets the name of the file that contains the PEM encoded CA certificates that will be
+// CAFile sets the path of a file containing PEM encoded CA certificates that will be
 // trusted when verifying the certificate presented by the AWX server. It can be used multiple times
 // to specify multiple files.
-//
 func (b *ConnectionBuilder) CAFile(file string) *ConnectionBuilder {
 	if file != "" {
 		b.caFiles = append(b.caFiles, file)
@@ -142,6 +153,8 @@ func (b *ConnectionBuilder) CAFile(file string) *ConnectionBuilder {
 	return b
 }
 
+// Build returns a Connection based on the provided configuration.
+// Close must be called from this point.
 func (b *ConnectionBuilder) Build() (c *Connection, err error) {
 	// Check the URL:
 	if b.url == "" {
@@ -261,23 +274,21 @@ func (b *ConnectionBuilder) Build() (c *Connection, err error) {
 }
 
 // Jobs returns a reference to the resource that manages the collection of jobs.
-//
 func (c *Connection) Jobs() *JobsResource {
 	return NewJobsResource(c, "jobs")
 }
 
 // JobTemplates returns a reference to the resource that manages the collection of job templates.
-//
 func (c *Connection) JobTemplates() *JobTemplatesResource {
 	return NewJobTemplatesResource(c, "job_templates")
 }
 
 // Projects returns a reference to the resource that manages the collection of projects.
-//
 func (c *Connection) Projects() *ProjectsResource {
 	return NewProjectsResource(c, "projects")
 }
 
+// Close the connection.
 func (c *Connection) Close() {
 	c.token = ""
 	c.bearer = ""
@@ -285,7 +296,6 @@ func (c *Connection) Close() {
 
 // ensureToken makes sure that there is a token available. If there isn't, then it will request a
 // new onw to the server.
-//
 func (c *Connection) ensureToken() error {
 	if c.token != "" || c.bearer != "" {
 		return nil
@@ -294,7 +304,6 @@ func (c *Connection) ensureToken() error {
 }
 
 // getToken requests a new authentication token.
-//
 func (c *Connection) getToken() (err error) {
 	if c.oAuth2Supported() {
 		err = c.getPATToken()

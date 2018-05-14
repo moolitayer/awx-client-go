@@ -18,12 +18,14 @@ limitations under the License.
 
 package awx
 
+// ListGetResponse represents a response for a GET request on any List type.
 type ListGetResponse struct {
 	count    int
 	next     string
 	previous string
 }
 
+// Count returns the count of this ListGetResponse.
 func (r *ListGetResponse) Count() int {
 	return r.count
 }

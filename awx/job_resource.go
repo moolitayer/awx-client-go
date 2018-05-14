@@ -23,10 +23,12 @@ import (
 	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
+// JobResource represents AWX job.
 type JobResource struct {
 	Resource
 }
 
+// NewJobResource is used to create a JobResource.
 func NewJobResource(connection *Connection, path string) *JobResource {
 	resource := new(JobResource)
 	resource.connection = connection
@@ -34,16 +36,19 @@ func NewJobResource(connection *Connection, path string) *JobResource {
 	return resource
 }
 
+// Get a JobGetRequest for this JobResource that could be sent.
 func (r *JobResource) Get() *JobGetRequest {
 	request := new(JobGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
+// JobGetRequest represents a GET request on a Job resource.
 type JobGetRequest struct {
 	Request
 }
 
+// Send initiates a round trip against an AWX server.
 func (r *JobGetRequest) Send() (response *JobGetResponse, err error) {
 	output := new(data.JobGetResponse)
 	err = r.get(output)
@@ -59,10 +64,12 @@ func (r *JobGetRequest) Send() (response *JobGetResponse, err error) {
 	return
 }
 
+// JobGetResponse represents a response from the server for a Job GET request.
 type JobGetResponse struct {
 	job *Job
 }
 
+// Job returns the Job associated with this JobGetResponse
 func (r *JobGetResponse) Job() *Job {
 	return r.job
 }

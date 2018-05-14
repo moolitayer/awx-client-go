@@ -119,6 +119,14 @@ See [Job Template](http://docs.ansible.com/ansible-tower/latest/html/userguide/j
 
 See [examples](examples).
 
+## Viewing go doc
+After [installing](https://github.com/moolitayer/awx-client-go#installation) the
+package, start a doc server:
+```bash
+$ godoc -http=":6060"
+```
+Next navigate to http://localhost:6060/pkg/github.com/moolitayer/awx-client-go/awx/.
+
 ## Development
 
 ### Running Tests

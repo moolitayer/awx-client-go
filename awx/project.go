@@ -46,8 +46,7 @@ func (p *Project) SCMType() string {
 	return p.scmType
 }
 
-// SCMType returns the source code management system URL of the project.
-//
+// SCMURL returns the source code management system URL of the project.
 func (p *Project) SCMURL() string {
 	return p.scmURL
 }

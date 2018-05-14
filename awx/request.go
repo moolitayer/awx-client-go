@@ -24,6 +24,7 @@ import (
 	"net/url"
 )
 
+// Request represents a request against an AWX server.
 type Request struct {
 	resource *Resource
 	query    url.Values

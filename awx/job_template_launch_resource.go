@@ -25,10 +25,12 @@ import (
 	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
+// JobTemplateLaunchResource is a LunchResource associated to a JobTemplate.
 type JobTemplateLaunchResource struct {
 	Resource
 }
 
+// NewJobTemplateLaunchResource is used to create a new JobTemplateLaunchResource
 func NewJobTemplateLaunchResource(connection *Connection, path string) *JobTemplateLaunchResource {
 	resource := new(JobTemplateLaunchResource)
 	resource.connection = connection
@@ -36,22 +38,28 @@ func NewJobTemplateLaunchResource(connection *Connection, path string) *JobTempl
 	return resource
 }
 
+// Get returns a JobTemplateLaunchGetRequest for this JobTemplateLaunchResource
+// so it could be sent
 func (r *JobTemplateLaunchResource) Get() *JobTemplateLaunchGetRequest {
 	request := new(JobTemplateLaunchGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
+// Post returns a JobTemplateLaunchPostRequest for this JobTemplateLaunchResource
 func (r *JobTemplateLaunchResource) Post() *JobTemplateLaunchPostRequest {
 	request := new(JobTemplateLaunchPostRequest)
 	request.resource = &r.Resource
 	return request
 }
 
+// JobTemplateLaunchGetRequest represents a get request against a
+// JobTemplateLaunch resource.
 type JobTemplateLaunchGetRequest struct {
 	Request
 }
 
+// Send initiates a round trip against an AWX server.
 func (r *JobTemplateLaunchGetRequest) Send() (response *JobTemplateLaunchGetResponse, err error) {
 	output := new(data.JobTemplateLaunchGetResponse)
 	err = r.get(output)
@@ -67,14 +75,20 @@ func (r *JobTemplateLaunchGetRequest) Send() (response *JobTemplateLaunchGetResp
 	return
 }
 
+// JobTemplateLaunchGetResponse respresents a response returned from a
+// JobTemplateLaunchGet.
 type JobTemplateLaunchGetResponse struct {
 	jobTemplateData *JobTemplate
 }
 
+// JobTemplateData represents the JobTemplate associated with this
+// JobTemplateLaunchGetResponse.
 func (r *JobTemplateLaunchGetResponse) JobTemplateData() *JobTemplate {
 	return r.jobTemplateData
 }
 
+// JobTemplateLaunchPostRequest allows sending post requests for a
+// JobTemplateLaunch.
 type JobTemplateLaunchPostRequest struct {
 	Request
 
@@ -103,6 +117,7 @@ func (r *JobTemplateLaunchPostRequest) Limit(value string) *JobTemplateLaunchPos
 	return r
 }
 
+// Send initiates a round trip against an AWX server.
 func (r *JobTemplateLaunchPostRequest) Send() (response *JobTemplateLaunchPostResponse, err error) {
 	// Generate the input data:
 	input := new(data.JobTemplateLaunchPostRequest)
@@ -133,6 +148,8 @@ func (r *JobTemplateLaunchPostRequest) Send() (response *JobTemplateLaunchPostRe
 	return
 }
 
+// JobTemplateLaunchPostResponse represents the response to a
+// JobTemplateLaunchPost request.
 type JobTemplateLaunchPostResponse struct {
 	Job int
 }

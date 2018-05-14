@@ -22,10 +22,12 @@ import (
 	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
+// ProjectResource is a Resource assciated with an AWX project.
 type ProjectResource struct {
 	Resource
 }
 
+// NewProjectResource creates a new ProjectResource.
 func NewProjectResource(connection *Connection, path string) *ProjectResource {
 	resource := new(ProjectResource)
 	resource.connection = connection
@@ -33,16 +35,19 @@ func NewProjectResource(connection *Connection, path string) *ProjectResource {
 	return resource
 }
 
+// Get returns a ProjectGetRequest for this ProjectResource so it could be sent.
 func (r *ProjectResource) Get() *ProjectGetRequest {
 	request := new(ProjectGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
+// ProjectGetRequest represents a GET request for an AWX project
 type ProjectGetRequest struct {
 	Request
 }
 
+// Send initiates a round trip against an AWX server.
 func (r *ProjectGetRequest) Send() (response *ProjectGetResponse, err error) {
 	output := new(data.ProjectGetResponse)
 	err = r.get(output)
@@ -59,10 +64,12 @@ func (r *ProjectGetRequest) Send() (response *ProjectGetResponse, err error) {
 	return
 }
 
+// ProjectGetResponse represents a response for a GET request on a project.
 type ProjectGetResponse struct {
 	result *Project
 }
 
+// Result returns the Project result associated with this ProjectGetResponse.
 func (r *ProjectGetResponse) Result() *Project {
 	return r.result
 }

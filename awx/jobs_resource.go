@@ -25,10 +25,12 @@ import (
 	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
+// JobsResource is a Resource representation for an AWX job.
 type JobsResource struct {
 	Resource
 }
 
+// NewJobsResource creates a new JobResource.
 func NewJobsResource(connection *Connection, path string) *JobsResource {
 	resource := new(JobsResource)
 	resource.connection = connection
@@ -36,25 +38,30 @@ func NewJobsResource(connection *Connection, path string) *JobsResource {
 	return resource
 }
 
+// Get returns a JobsGetRequest for this JobsResource.
 func (r *JobsResource) Get() *JobsGetRequest {
 	request := new(JobsGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
+// ID sets the identifier of this JobsResource.
 func (r *JobsResource) ID(id int) *JobResource {
 	return NewJobResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
+// JobsGetRequest represents the content of a GET request against AWX jobs.
 type JobsGetRequest struct {
 	Request
 }
 
+// Filter add a filter for this JobsGetRequest
 func (r *JobsGetRequest) Filter(name string, value interface{}) *JobsGetRequest {
 	r.addFilter(name, value)
 	return r
 }
 
+// Send initiates a round trip against an AWX server.
 func (r *JobsGetRequest) Send() (response *JobsGetResponse, err error) {
 	output := new(data.JobsGetResponse)
 	err = r.get(output)
@@ -74,12 +81,14 @@ func (r *JobsGetRequest) Send() (response *JobsGetResponse, err error) {
 	return
 }
 
+// JobsGetResponse represents the response for an AWX jobs GET request.
 type JobsGetResponse struct {
 	ListGetResponse
 
 	results []*Job
 }
 
+// Results retusns job results from this JobsGetResponse.
 func (r *JobsGetResponse) Results() []*Job {
 	return r.results
 }

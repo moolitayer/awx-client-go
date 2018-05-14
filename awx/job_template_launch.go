@@ -18,6 +18,8 @@ limitations under the License.
 
 package awx
 
+// JobTemplateLaunch represents the payload needed for a launch request on a
+// template.
 type JobTemplateLaunch struct {
 	JobTemplateData *JobTemplate `json:"job_template_data,omitempty"`
 }

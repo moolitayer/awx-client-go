@@ -22,6 +22,7 @@ import (
 	"net/url"
 )
 
+// Resource represents a URL path
 type Resource struct {
 	connection *Connection
 	path       string

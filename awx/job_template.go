@@ -18,6 +18,7 @@ limitations under the License.
 
 package awx
 
+// JobTemplate represents a single AWX job_template.
 type JobTemplate struct {
 	id               int
 	name             string
@@ -25,18 +26,24 @@ type JobTemplate struct {
 	askVarsOnLaunch  bool
 }
 
+// ID is the identifier assigned to this JobTemplate by the AWX server.
 func (t *JobTemplate) ID() int {
 	return t.id
 }
 
+// Name is the name given to this JobTemplate by the AWX server.
 func (t *JobTemplate) Name() string {
 	return t.name
 }
 
+// AskLimitOnLaunch is true if this JobTemplate allows to override the limit
+// parameter when running this template.
 func (t *JobTemplate) AskLimitOnLaunch() bool {
 	return t.askLimitOnLaunch
 }
 
+// AskVarsOnLaunch is true if this JobTemplate allows to override the extra_vars
+// when running this template.
 func (t *JobTemplate) AskVarsOnLaunch() bool {
 	return t.askVarsOnLaunch
 }

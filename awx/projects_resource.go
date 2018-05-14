@@ -25,10 +25,12 @@ import (
 	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
+// ProjectsResource is a Resource for an AWX project.
 type ProjectsResource struct {
 	Resource
 }
 
+// NewProjectsResource creates a new ProjectsResource.
 func NewProjectsResource(connection *Connection, path string) *ProjectsResource {
 	resource := new(ProjectsResource)
 	resource.connection = connection
@@ -36,25 +38,30 @@ func NewProjectsResource(connection *Connection, path string) *ProjectsResource 
 	return resource
 }
 
+// Get returns a ProjectsGetRequest for this ProjectsResource.
 func (r *ProjectsResource) Get() *ProjectsGetRequest {
 	request := new(ProjectsGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
+// ID sets the identifier of this ProjectsResource.
 func (r *ProjectsResource) ID(id int) *ProjectResource {
 	return NewProjectResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
+// ProjectsGetRequest represents a get request against awx projects.
 type ProjectsGetRequest struct {
 	Request
 }
 
+// Filter adds a filter on this ProjectsGetRequest.
 func (r *ProjectsGetRequest) Filter(name string, value interface{}) *ProjectsGetRequest {
 	r.addFilter(name, value)
 	return r
 }
 
+// Send initiates a round trip against an AWX server.
 func (r *ProjectsGetRequest) Send() (response *ProjectsGetResponse, err error) {
 	output := new(data.ProjectsGetResponse)
 	err = r.get(output)
@@ -77,12 +84,14 @@ func (r *ProjectsGetRequest) Send() (response *ProjectsGetResponse, err error) {
 	return
 }
 
+// ProjectsGetResponse represents the response for a GET request on projects.
 type ProjectsGetResponse struct {
 	ListGetResponse
 
 	results []*Project
 }
 
+// Results returns the project results in this ProjectsGetResponse.
 func (r *ProjectsGetResponse) Results() []*Project {
 	return r.results
 }
