@@ -280,6 +280,7 @@ func (c *Connection) Projects() *ProjectsResource {
 
 func (c *Connection) Close() {
 	c.token = ""
+	c.bearer = ""
 }
 
 // ensureToken makes sure that there is a token available. If there isn't, then it will request a
