@@ -70,7 +70,7 @@ func TestFilterJsonBytes(t *testing.T) {
 // through api/v2/users/<name>/personal_tokens
 func TestOAUTH2Token(t *testing.T) {
 	connection, err := NewConnectionBuilder().
-		Url("http://localhost:9100/api").
+		URL("http://localhost:9100/api").
 		Username("admin").
 		Password("password").
 		Build()
@@ -114,7 +114,7 @@ func TestPreOAUTH2(t *testing.T) {
 	// Basic = printf "admin:PASSWORD"| base64
 	// Body = printf '{"username":"admin","password":"PASSWORD"}'|base64
 	connection, err := NewConnectionBuilder().
-		Url("https://tower.private/api").
+		URL("https://tower.private/api").
 		Username("admin").
 		Password("PASSWORD").
 		Insecure(true).
