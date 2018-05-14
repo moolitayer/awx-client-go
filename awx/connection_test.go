@@ -36,31 +36,31 @@ func TestFilterHeader(t *testing.T) {
 	}
 }
 
-func TestFilterJsonBytes(t *testing.T) {
+func TestFilterJSONBytes(t *testing.T) {
 	input := []byte("{\"Password\":\"foo\"}")
 	expected := []byte("{\"Password\":\"REDACTED\"}")
-	result := filterJsonBytes(input)
+	result := filterJSONBytes(input)
 	if string(result) != string(expected) {
 		t.Errorf("Expected %s, got %s", expected, result)
 	}
 
 	input = []byte("{\"aaa\":{\"a\":\"a\",\"password\":\"foo\"}}")
 	expected = []byte("{\"aaa\":{\"a\":\"a\",\"password\":\"REDACTED\"}}")
-	result = filterJsonBytes(input)
+	result = filterJSONBytes(input)
 	if string(result) != string(expected) {
 		t.Errorf("Expected %s, got %s", expected, result)
 	}
 
 	input = []byte("{\"aaa\":[{\"password\":\"foo\"},\"bar\"]}")
 	expected = []byte("{\"aaa\":[{\"password\":\"REDACTED\"},\"bar\"]}")
-	result = filterJsonBytes(input)
+	result = filterJSONBytes(input)
 	if string(result) != string(expected) {
 		t.Errorf("Expected %s, got %s", expected, result)
 	}
 
 	input = []byte("[{\"password\":\"foo\"},\"bar\"]")
 	expected = []byte("[{\"password\":\"REDACTED\"},\"bar\"]")
-	result = filterJsonBytes(input)
+	result = filterJSONBytes(input)
 	if string(result) != string(expected) {
 		t.Errorf("Expected %s, got %s", expected, result)
 	}

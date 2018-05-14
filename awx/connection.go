@@ -468,7 +468,7 @@ func (c *Connection) rawGet(path string, query url.Values) (output []byte, err e
 		return
 	}
 	if glog.V(3) {
-		glog.Infof("Response body:\n%s", c.indent(filterJsonBytes(output)))
+		glog.Infof("Response body:\n%s", c.indent(filterJSONBytes(output)))
 		glog.Info("Response headers:")
 		for key, val := range response.Header {
 			glog.Infof("	%s: %v", key, filterHeader(key, val))
@@ -522,7 +522,7 @@ func (c *Connection) rawPost(path string, query url.Values, input []byte) (outpu
 		glog.Infof("Sending POST request to '%s'.", address)
 	}
 	if glog.V(3) {
-		glog.Infof("Request body:\n%s", c.indent(filterJsonBytes(input)))
+		glog.Infof("Request body:\n%s", c.indent(filterJSONBytes(input)))
 		glog.Infof("Request headers:")
 		for key, val := range request.Header {
 			glog.Infof("	%s: %v", key, filterHeader(key, val))
@@ -541,7 +541,7 @@ func (c *Connection) rawPost(path string, query url.Values, input []byte) (outpu
 		return
 	}
 	if glog.V(3) {
-		glog.Infof("Response body:\n%s", c.indent(filterJsonBytes(output)))
+		glog.Infof("Response body:\n%s", c.indent(filterJSONBytes(output)))
 		glog.Info("Response headers:")
 		for key, val := range response.Header {
 			glog.Infof("	%s: %v", key, val)
@@ -591,7 +591,7 @@ func (c *Connection) indent(data []byte) []byte {
 
 var passwordFilterRegex = regexp.MustCompile("(?i:password|token|authorization|key)")
 
-func filterJsonBytes(bytes []byte) []byte {
+func filterJSONBytes(bytes []byte) []byte {
 	if len(bytes) == 0 {
 		return bytes
 	}
@@ -601,7 +601,7 @@ func filterJsonBytes(bytes []byte) []byte {
 		glog.Warningf("Error parsing: %v", err)
 		return []byte{}
 	}
-	jsonObj = filterJsonObject(jsonObj)
+	jsonObj = filterJSONObject(jsonObj)
 	ret, err := json.Marshal(jsonObj)
 	if err != nil {
 		glog.Warningf("Error encoding: %v", err)
@@ -610,19 +610,19 @@ func filterJsonBytes(bytes []byte) []byte {
 	return ret
 }
 
-func filterJsonObject(object interface{}) interface{} {
+func filterJSONObject(object interface{}) interface{} {
 	switch object := object.(type) {
 	case map[string]interface{}: //JSON dicts
 		for key, val := range object {
 			if passwordFilterRegex.MatchString(key) {
 				object[key] = "REDACTED"
 			} else {
-				object[key] = filterJsonObject(val)
+				object[key] = filterJSONObject(val)
 			}
 		}
 	case []interface{}: //JSON Arrays
 		for index, val := range object {
-			object[index] = filterJsonObject(val)
+			object[index] = filterJSONObject(val)
 		}
 	}
 	return object
