@@ -25,7 +25,7 @@ import 	"github.com/moolitayer/awx-client-go/awx"
 ```go
 // Uses the builder pattern:
 connection, err := awx.NewConnectionBuilder().
-  Url("http://awx.example.com/api").          // Url is mandatory
+  URL("http://awx.example.com/api").          // URL is mandatory
   Username(username).
   Password(password).
   Token("TOKEN").
@@ -40,7 +40,7 @@ if err != nil {
 defer connection.Close()                      // Don't forget to close the connection!
 ```
 
-`Url()` points at an AWX server's root API endpoint (including the '/api' path) and is mandatory.  
+`URL()` points at an AWX server's root API endpoint (including the '/api' path) and is mandatory.
 `Proxy()` specifies a proxy server to use for all outgoing connection to the AWX server.
 #### Authentication
 Use one of:

@@ -76,7 +76,7 @@ func NewConnectionBuilder() *ConnectionBuilder {
 	return b
 }
 
-func (b *ConnectionBuilder) Url(url string) *ConnectionBuilder {
+func (b *ConnectionBuilder) URL(url string) *ConnectionBuilder {
 	b.url = url
 	return b
 }
@@ -356,9 +356,9 @@ func (c *Connection) getPATToken() error {
 	return nil
 }
 
-// makeUrl calculates the absolute URL for the given relative path and query.
+// makeURL calculates the absolute URL for the given relative path and query.
 //
-func (c *Connection) makeUrl(path, prefix string, query url.Values) string {
+func (c *Connection) makeURL(path, prefix string, query url.Values) string {
 	// Allocate a buffer large enough for the longest possible URL:
 	buffer := new(bytes.Buffer)
 	buffer.Grow(len(c.base) + len(prefix) + 1 + len(path) + 1)
@@ -407,7 +407,7 @@ func (c *Connection) head(path, prefix string) error {
 	return nil
 }
 func (c *Connection) rawHead(path, prefix string) (err error) {
-	address := c.makeUrl(path, prefix, nil)
+	address := c.makeURL(path, prefix, nil)
 	request, err := http.NewRequest(http.MethodHead, address, nil)
 	if err != nil {
 		return
@@ -438,7 +438,7 @@ func (c *Connection) rawHead(path, prefix string) (err error) {
 }
 func (c *Connection) rawGet(path string, query url.Values) (output []byte, err error) {
 	// Send the request:
-	address := c.makeUrl(path, c.version, query)
+	address := c.makeURL(path, c.version, query)
 	request, err := http.NewRequest(http.MethodGet, address, nil)
 	if err != nil {
 		return
@@ -508,7 +508,7 @@ func (c *Connection) post(path string, query url.Values, input interface{}, outp
 
 func (c *Connection) rawPost(path string, query url.Values, input []byte) (output []byte, err error) {
 	// Post the input bytes:
-	address := c.makeUrl(path, c.version, query)
+	address := c.makeURL(path, c.version, query)
 	buffer := bytes.NewBuffer(input)
 	request, err := http.NewRequest(http.MethodPost, address, buffer)
 	if err != nil {
