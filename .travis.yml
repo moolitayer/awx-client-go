@@ -9,10 +9,10 @@ go_import_path: github.com/moolitayer/awx-client-go
 install:
 - go get github.com/golang/glog
 - go get golang.org/x/tools/cmd/goimports
+- go get github.com/seborama/govcr
 
 script:
 - make verify
 - go build ./awx
 - for i in examples/*.go; do go build "${i}"; done
 - go test ./awx
-

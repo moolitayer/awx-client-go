@@ -10,10 +10,6 @@ Install awx-client-go using the "go-get" command:
 go get github.com/golang/glog # Dependency
 go get github.com/moolitayer/awx-client-go/awx
 ```
-For development also install goimports, needed for "make verify"
-```
-go get golang.org/x/tools/cmd/goimports
-```
 
 ## Usage
 ### import
@@ -32,7 +28,7 @@ connection, err := awx.NewConnectionBuilder().
   Bearer("BEARER").
   CAFile("/etc/pki/tls/cert.pem").
   Insecure(insecure).
-  Proxy(http://myproxy.example.com).
+  Proxy("http://myproxy.example.com").
   Build()                                    // Create the client
 if err != nil {
   panic(err)
@@ -122,3 +118,14 @@ See [Job Template](http://docs.ansible.com/ansible-tower/latest/html/userguide/j
 ## Examples
 
 See [examples](examples).
+
+## Development
+
+### Running Tests
+Install development dependencies:
+```
+go get github.com/seborama/govcr
+go get golang.org/x/tools/cmd/goimports
+
+make
+```
