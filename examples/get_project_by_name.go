@@ -92,7 +92,7 @@ func main() {
 		fmt.Printf("There is no project named '%s'.\n", name)
 	} else {
 		for _, project := range projects {
-			fmt.Printf("Id is '%d'.\n", project.Id())
+			fmt.Printf("Id is '%d'.\n", project.ID())
 			fmt.Printf("Name is '%s'.\n", project.Name())
 			fmt.Printf("SCM type is '%s'.\n", project.SCMType())
 			fmt.Printf("SCM URL is '%s'.\n", project.SCMURL())

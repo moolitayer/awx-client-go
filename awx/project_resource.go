@@ -51,7 +51,7 @@ func (r *ProjectGetRequest) Send() (response *ProjectGetResponse, err error) {
 	}
 	response = new(ProjectGetResponse)
 	response.result = new(Project)
-	response.result.id = output.Id
+	response.result.id = output.ID
 	response.result.name = output.Name
 	response.result.scmType = output.SCMType
 	response.result.scmURL = output.SCMURL

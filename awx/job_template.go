@@ -25,7 +25,7 @@ type JobTemplate struct {
 	askVarsOnLaunch  bool
 }
 
-func (t *JobTemplate) Id() int {
+func (t *JobTemplate) ID() int {
 	return t.id
 }
 

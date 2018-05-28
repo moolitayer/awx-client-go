@@ -42,7 +42,7 @@ func (r *JobTemplatesResource) Get() *JobTemplatesGetRequest {
 	return request
 }
 
-func (r *JobTemplatesResource) Id(id int) *JobTemplateResource {
+func (r *JobTemplatesResource) ID(id int) *JobTemplateResource {
 	return NewJobTemplateResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
@@ -68,7 +68,7 @@ func (r *JobTemplatesGetRequest) Send() (response *JobTemplatesGetResponse, err 
 	response.results = make([]*JobTemplate, len(output.Results))
 	for i := 0; i < len(output.Results); i++ {
 		response.results[i] = new(JobTemplate)
-		response.results[i].id = output.Results[i].Id
+		response.results[i].id = output.Results[i].ID
 		response.results[i].name = output.Results[i].Name
 		response.results[i].askLimitOnLaunch = output.Results[i].AskLimitOnLaunch
 		response.results[i].askVarsOnLaunch = output.Results[i].AskVarsOnLaunch

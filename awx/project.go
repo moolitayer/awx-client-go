@@ -28,9 +28,9 @@ type Project struct {
 	scmBranch string
 }
 
-// Id returns the unique identifier of the project.
+// ID returns the unique identifier of the project.
 //
-func (p *Project) Id() int {
+func (p *Project) ID() int {
 	return p.id
 }
 

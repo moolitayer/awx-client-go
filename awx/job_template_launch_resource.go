@@ -61,7 +61,7 @@ func (r *JobTemplateLaunchGetRequest) Send() (response *JobTemplateLaunchGetResp
 	response = new(JobTemplateLaunchGetResponse)
 	if output.JobTemplateData != nil {
 		response.jobTemplateData = new(JobTemplate)
-		response.jobTemplateData.id = output.JobTemplateData.Id
+		response.jobTemplateData.id = output.JobTemplateData.ID
 		response.jobTemplateData.name = output.JobTemplateData.Name
 	}
 	return

@@ -19,7 +19,7 @@ limitations under the License.
 package data
 
 type JobTemplate struct {
-	Id               int    `json:"id,omitempty"`
+	ID               int    `json:"id,omitempty"`
 	Name             string `json:"name,omitempty"`
 	AskLimitOnLaunch bool   `json:"ask_limit_on_launch,omitempty"`
 	AskVarsOnLaunch  bool   `json:"ask_variables_on_launch,omitempty"`

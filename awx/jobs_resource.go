@@ -42,7 +42,7 @@ func (r *JobsResource) Get() *JobsGetRequest {
 	return request
 }
 
-func (r *JobsResource) Id(id int) *JobResource {
+func (r *JobsResource) ID(id int) *JobResource {
 	return NewJobResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
@@ -68,7 +68,7 @@ func (r *JobsGetRequest) Send() (response *JobsGetResponse, err error) {
 	response.results = make([]*Job, len(output.Results))
 	for i, result := range response.results {
 		result = new(Job)
-		result.id = output.Results[i].Id
+		result.id = output.Results[i].ID
 		result.status = (JobStatus)(output.Results[i].Status)
 	}
 	return

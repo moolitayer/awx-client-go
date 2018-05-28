@@ -19,7 +19,7 @@ limitations under the License.
 package data
 
 type Project struct {
-	Id        int    `json:"id,omitempty"`
+	ID        int    `json:"id,omitempty"`
 	Name      string `json:"name,omitempty"`
 	SCMType   string `json:"scm_type,omitempty"`
 	SCMURL    string `json:"scm_url,omitempty"`

@@ -85,6 +85,6 @@ func main() {
 	// Print the results:
 	projects := getProjectsResponse.Results()
 	for _, project := range projects {
-		fmt.Printf("%d: %s - %s\n", project.Id(), project.Name(), project.SCMURL())
+		fmt.Printf("%d: %s - %s\n", project.ID(), project.Name(), project.SCMURL())
 	}
 }

@@ -78,7 +78,7 @@ func main() {
 	// Find the resource that manages the project. Note that we don't need to do a search with a
 	// filter because we already know the identifier of the project, maybe because we got it in a
 	// previous search.
-	projectResource := connection.Projects().Id(id)
+	projectResource := connection.Projects().ID(id)
 
 	// Send the request to retrieve the project:
 	getProjectResponse, err := projectResource.Get().
@@ -89,7 +89,7 @@ func main() {
 
 	// Print the results:
 	project := getProjectResponse.Result()
-	fmt.Printf("Id is '%d'.\n", project.Id())
+	fmt.Printf("Id is '%d'.\n", project.ID())
 	fmt.Printf("Name is '%s'.\n", project.Name())
 	fmt.Printf("SCM type is '%s'.\n", project.SCMType())
 	fmt.Printf("SCM URL is '%s'.\n", project.SCMURL())

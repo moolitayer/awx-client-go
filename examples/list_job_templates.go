@@ -86,7 +86,7 @@ func main() {
 	templates := getTemplatesResponse.Results()
 	for _, template := range templates {
 		fmt.Printf("%d: %s - Ask Limit: %v, Ask Vars: %v\n",
-			template.Id(), template.Name(),
+			template.ID(), template.Name(),
 			template.AskLimitOnLaunch(), template.AskVarsOnLaunch())
 	}
 }

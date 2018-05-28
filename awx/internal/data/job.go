@@ -19,7 +19,7 @@ limitations under the License.
 package data
 
 type Job struct {
-	Id     int    `json:"id,omitempty"`
+	ID     int    `json:"id,omitempty"`
 	Status string `json:"status,omitempty"`
 }
 

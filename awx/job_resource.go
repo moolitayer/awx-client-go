@@ -53,7 +53,7 @@ func (r *JobGetRequest) Send() (response *JobGetResponse, err error) {
 	response = new(JobGetResponse)
 	if output != nil {
 		response.job = new(Job)
-		response.job.id = output.Id
+		response.job.id = output.ID
 		response.job.status = (JobStatus)(output.Status)
 	}
 	return

@@ -129,7 +129,7 @@ func main() {
 
 	// Launch all corresponding templated
 	for _, t := range templatesResponse.Results() {
-		launchResource := connection.JobTemplates().Id(t.Id()).Launch()
+		launchResource := connection.JobTemplates().ID(t.ID()).Launch()
 
 		if limit != "" && !t.AskLimitOnLaunch() {
 			glog.Warningf("About to launch template '%s' with limit '%s', but 'prompt-on-launch' is false. Limit will be ignored",

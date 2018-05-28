@@ -42,7 +42,7 @@ func (r *ProjectsResource) Get() *ProjectsGetRequest {
 	return request
 }
 
-func (r *ProjectsResource) Id(id int) *ProjectResource {
+func (r *ProjectsResource) ID(id int) *ProjectResource {
 	return NewProjectResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
@@ -68,7 +68,7 @@ func (r *ProjectsGetRequest) Send() (response *ProjectsGetResponse, err error) {
 	response.results = make([]*Project, len(output.Results))
 	for i := 0; i < len(output.Results); i++ {
 		response.results[i] = new(Project)
-		response.results[i].id = output.Results[i].Id
+		response.results[i].id = output.Results[i].ID
 		response.results[i].name = output.Results[i].Name
 		response.results[i].scmType = output.Results[i].SCMType
 		response.results[i].scmURL = output.Results[i].SCMURL

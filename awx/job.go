@@ -36,7 +36,8 @@ type Job struct {
 	status JobStatus
 }
 
-func (j *Job) Id() int {
+// ID is The AWX identifier given to this job.
+func (j *Job) ID() int {
 	return j.id
 }
 
