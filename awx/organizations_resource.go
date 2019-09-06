@@ -15,74 +15,73 @@ limitations under the License.
 */
 
 // This file contains the implementation of the resource that manages the collection of
-// projects.
+// Organizations.
 
 package awx
 
 import (
 	"fmt"
 
+	//"github.com/moolitayer/awx-client-go/awx/internal/data"
 	"./internal/data"
 )
 
-type ProjectsResource struct {
+type OrganizationsResource struct {
 	Resource
 }
 
-func NewProjectsResource(connection *Connection, path string) *ProjectsResource {
-	resource := new(ProjectsResource)
+func NewOrganizationsResource(connection *Connection, path string) *OrganizationsResource {
+	resource := new(OrganizationsResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *ProjectsResource) Get() *ProjectsGetRequest {
-	request := new(ProjectsGetRequest)
+func (r *OrganizationsResource) Get() *OrganizationsGetRequest {
+	request := new(OrganizationsGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
-func (r *ProjectsResource) Id(id int) *ProjectResource {
-	return NewProjectResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
+func (r *OrganizationsResource) Id(id int) *OrganizationResource {
+	return NewOrganizationResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
-type ProjectsGetRequest struct {
+type OrganizationsGetRequest struct {
 	Request
 }
 
-func (r *ProjectsGetRequest) Filter(name string, value interface{}) *ProjectsGetRequest {
+func (r *OrganizationsGetRequest) Filter(name string, value interface{}) *OrganizationsGetRequest {
 	r.addFilter(name, value)
 	return r
 }
 
-func (r *ProjectsGetRequest) Send() (response *ProjectsGetResponse, err error) {
-	output := new(data.ProjectsGetResponse)
+func (r *OrganizationsGetRequest) Send() (response *OrganizationsGetResponse, err error) {
+	output := new(data.OrganizationsGetResponse)
 	err = r.get(output)
 	if err != nil {
 		return
 	}
-	response = new(ProjectsGetResponse)
+	response = new(OrganizationsGetResponse)
 	response.count = output.Count
 	response.previous = output.Previous
 	response.next = output.Next
-	response.results = make([]*Project, len(output.Results))
+	response.results = make([]*Organization, len(output.Results))
 	for i := 0; i < len(output.Results); i++ {
-		response.results[i] = new(Project)
+		response.results[i] = new(Organization)
 		response.results[i].id = output.Results[i].Id
 		response.results[i].name = output.Results[i].Name
-		response.results[i].scmType = output.Results[i].SCMType
-		response.results[i].scmURL = output.Results[i].SCMURL
-		response.results[i].scmBranch = output.Results[i].SCMBranch
+		response.results[i].execute_role_id = output.Results[i].Summaryfields.Objectroles.Executeroles.Id
 	}
 	return
 }
 
-type ProjectsGetResponse struct {
+type OrganizationsGetResponse struct {
 	ListGetResponse
 
-	results []*Project
+	results []*Organization
 }
 
-func (r *ProjectsGetResponse) Results() []*Project {
+func (r *OrganizationsGetResponse) Results() []*Organization {
 	return r.results
 }

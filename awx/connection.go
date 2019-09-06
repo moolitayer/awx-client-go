@@ -28,8 +28,8 @@ import (
 	"regexp"
 	"strings"
 
+	"./internal/data"
 	"github.com/golang/glog"
-	"github.com/moolitayer/awx-client-go/awx/internal/data"
 )
 
 // Version is the version of the client.
@@ -276,6 +276,18 @@ func (c *Connection) JobTemplates() *JobTemplatesResource {
 //
 func (c *Connection) Projects() *ProjectsResource {
 	return NewProjectsResource(c, "projects")
+}
+
+// Users returns a reference to the resource that manages the collection of users.
+//
+func (c *Connection) Users() *UsersResource {
+	return NewUsersResource(c, "users")
+}
+
+// Organizations returns a reference to the resource that manages the collection of Organizations.
+//
+func (c *Connection) Organizations() *OrganizationsResource {
+	return NewOrganizationsResource(c, "organizations")
 }
 
 func (c *Connection) Close() {

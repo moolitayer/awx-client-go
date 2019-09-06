@@ -14,55 +14,54 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// This file contains the implementation of the resource that manages launching of jobs from job
-// templates.
+// This file contains the implementation of the resource that manages a specific User.
 
 package awx
 
 import (
+	//"github.com/moolitayer/awx-client-go/awx/internal/data"
 	"./internal/data"
 )
 
-type JobResource struct {
+type UserResource struct {
 	Resource
 }
 
-func NewJobResource(connection *Connection, path string) *JobResource {
-	resource := new(JobResource)
+func NewUserResource(connection *Connection, path string) *UserResource {
+	resource := new(UserResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *JobResource) Get() *JobGetRequest {
-	request := new(JobGetRequest)
+func (r *UserResource) Get() *UserGetRequest {
+	request := new(UserGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
-type JobGetRequest struct {
+type UserGetRequest struct {
 	Request
 }
 
-func (r *JobGetRequest) Send() (response *JobGetResponse, err error) {
-	output := new(data.JobGetResponse)
+func (r *UserGetRequest) Send() (response *UserGetResponse, err error) {
+	output := new(data.UserGetResponse)
 	err = r.get(output)
 	if err != nil {
-		return nil, err
+		return
 	}
-	response = new(JobGetResponse)
-	if output != nil {
-		response.job = new(Job)
-		response.job.id = output.Id
-		response.job.status = (JobStatus)(output.Status)
-	}
+	response = new(UserGetResponse)
+	response.result = new(User)
+	response.result.id = output.Id
+	response.result.username = output.Username
+	response.result.is_superuser = output.Is_superuser
 	return
 }
 
-type JobGetResponse struct {
-	job *Job
+type UserGetResponse struct {
+	result *User
 }
 
-func (r *JobGetResponse) Job() *Job {
-	return r.job
+func (r *UserGetResponse) Result() *User {
+	return r.result
 }

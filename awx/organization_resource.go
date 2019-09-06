@@ -14,55 +14,54 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// This file contains the implementation of the resource that manages a specific project.
+// This file contains the implementation of the resource that manages a specific Organization.
 
 package awx
 
 import (
+	//"github.com/moolitayer/awx-client-go/awx/internal/data"
 	"./internal/data"
 )
 
-type ProjectResource struct {
+type OrganizationResource struct {
 	Resource
 }
 
-func NewProjectResource(connection *Connection, path string) *ProjectResource {
-	resource := new(ProjectResource)
+func NewOrganizationResource(connection *Connection, path string) *OrganizationResource {
+	resource := new(OrganizationResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *ProjectResource) Get() *ProjectGetRequest {
-	request := new(ProjectGetRequest)
+func (r *OrganizationResource) Get() *OrganizationGetRequest {
+	request := new(OrganizationGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
-type ProjectGetRequest struct {
+type OrganizationGetRequest struct {
 	Request
 }
 
-func (r *ProjectGetRequest) Send() (response *ProjectGetResponse, err error) {
-	output := new(data.ProjectGetResponse)
+func (r *OrganizationGetRequest) Send() (response *OrganizationGetResponse, err error) {
+	output := new(data.OrganizationGetResponse)
 	err = r.get(output)
 	if err != nil {
 		return
 	}
-	response = new(ProjectGetResponse)
-	response.result = new(Project)
+	response = new(OrganizationGetResponse)
+	response.result = new(Organization)
 	response.result.id = output.Id
 	response.result.name = output.Name
-	response.result.scmType = output.SCMType
-	response.result.scmURL = output.SCMURL
-	response.result.scmBranch = output.SCMBranch
+	response.result.execute_role_id = output.Summaryfields.Objectroles.Executeroles.Id
 	return
 }
 
-type ProjectGetResponse struct {
-	result *Project
+type OrganizationGetResponse struct {
+	result *Organization
 }
 
-func (r *ProjectGetResponse) Result() *Project {
+func (r *OrganizationGetResponse) Result() *Organization {
 	return r.result
 }

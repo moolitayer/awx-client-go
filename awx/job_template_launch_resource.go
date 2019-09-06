@@ -22,7 +22,7 @@ package awx
 import (
 	"encoding/json"
 
-	"github.com/moolitayer/awx-client-go/awx/internal/data"
+	"./internal/data"
 )
 
 type JobTemplateLaunchResource struct {

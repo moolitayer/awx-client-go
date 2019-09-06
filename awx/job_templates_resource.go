@@ -22,7 +22,7 @@ package awx
 import (
 	"fmt"
 
-	"github.com/moolitayer/awx-client-go/awx/internal/data"
+	"./internal/data"
 )
 
 type JobTemplatesResource struct {
