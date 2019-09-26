@@ -249,6 +249,7 @@ func (b *ConnectionBuilder) Build() (c *Connection, err error) {
 	c.base = b.url
 	c.username = b.username
 	c.password = b.password
+	c.bearer = b.bearer
 	c.version = "v2"
 	c.client = client
 
