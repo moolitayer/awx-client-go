@@ -15,74 +15,73 @@ limitations under the License.
 */
 
 // This file contains the implementation of the resource that manages the collection of
-// projects.
+// Users.
 
 package awx
 
 import (
 	"fmt"
 
+	//"github.com/moolitayer/awx-client-go/awx/internal/data"
 	"./internal/data"
 )
 
-type ProjectsResource struct {
+type UsersResource struct {
 	Resource
 }
 
-func NewProjectsResource(connection *Connection, path string) *ProjectsResource {
-	resource := new(ProjectsResource)
+func NewUsersResource(connection *Connection, path string) *UsersResource {
+	resource := new(UsersResource)
 	resource.connection = connection
 	resource.path = path
 	return resource
 }
 
-func (r *ProjectsResource) Get() *ProjectsGetRequest {
-	request := new(ProjectsGetRequest)
+func (r *UsersResource) Get() *UsersGetRequest {
+	request := new(UsersGetRequest)
 	request.resource = &r.Resource
 	return request
 }
 
-func (r *ProjectsResource) Id(id int) *ProjectResource {
-	return NewProjectResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
+func (r *UsersResource) Id(id int) *UserResource {
+	return NewUserResource(r.connection, fmt.Sprintf("%s/%d", r.path, id))
 }
 
-type ProjectsGetRequest struct {
+type UsersGetRequest struct {
 	Request
 }
 
-func (r *ProjectsGetRequest) Filter(name string, value interface{}) *ProjectsGetRequest {
+func (r *UsersGetRequest) Filter(name string, value interface{}) *UsersGetRequest {
 	r.addFilter(name, value)
 	return r
 }
 
-func (r *ProjectsGetRequest) Send() (response *ProjectsGetResponse, err error) {
-	output := new(data.ProjectsGetResponse)
+func (r *UsersGetRequest) Send() (response *UsersGetResponse, err error) {
+	output := new(data.UsersGetResponse)
 	err = r.get(output)
 	if err != nil {
 		return
 	}
-	response = new(ProjectsGetResponse)
+	response = new(UsersGetResponse)
 	response.count = output.Count
 	response.previous = output.Previous
 	response.next = output.Next
-	response.results = make([]*Project, len(output.Results))
+	response.results = make([]*User, len(output.Results))
 	for i := 0; i < len(output.Results); i++ {
-		response.results[i] = new(Project)
+		response.results[i] = new(User)
 		response.results[i].id = output.Results[i].Id
-		response.results[i].name = output.Results[i].Name
-		response.results[i].scmType = output.Results[i].SCMType
-		response.results[i].scmURL = output.Results[i].SCMURL
-		response.results[i].scmBranch = output.Results[i].SCMBranch
+		response.results[i].username = output.Results[i].Username
+		response.results[i].is_superuser = output.Results[i].Is_superuser
 	}
 	return
 }
 
-type ProjectsGetResponse struct {
+type UsersGetResponse struct {
 	ListGetResponse
 
-	results []*Project
+	results []*User
 }
 
-func (r *ProjectsGetResponse) Results() []*Project {
+func (r *UsersGetResponse) Results() []*User {
 	return r.results
 }

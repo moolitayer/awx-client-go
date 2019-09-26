@@ -20,7 +20,7 @@ limitations under the License.
 package awx
 
 import (
-	"github.com/moolitayer/awx-client-go/awx/internal/data"
+	"./internal/data"
 )
 
 type JobTemplateResource struct {
