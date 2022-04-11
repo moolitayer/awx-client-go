@@ -251,6 +251,8 @@ func (b *ConnectionBuilder) Build() (c *Connection, err error) {
 	c.password = b.password
 	c.version = "v2"
 	c.client = client
+	c.token = b.token
+	c.bearer = b.bearer
 
 	// Ensure that the base URL has an slash at the end:
 	if !strings.HasSuffix(c.base, "/") {
